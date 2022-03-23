@@ -6,10 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Flag-It!</title>
+    <title>FLAG-IT!</title>
 </head>
 <body>
-    
+    <!--Name of the game-->
+    <header>
+        <h1 class="heading">FLAG-IT!</h1>
+    </header>
+    <!--Introduction at the start of the loaded page-->
+    <div class="game-introduction"></div>
+    <!--Game area.-->
+    <div class="game-area">
+        <!--Flag question-->
+        <div class="flag"></div>
+        <!--Count down timer-->
+        <div class="timer"></div>
+        <!--Four buttons with suggested answers-->
+        <div class="answer-btns">
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        <button class="answer-btn"></button>
+        </div>
+        <!--Start/Next question/Play again version of button-->
+        <button class="start"></button>
+        <button class="next hide"></button>
+        <button class="play-again hide"></button>
+    </div>
+    <!--Game over screen-->
+    <div class="game-over"></div>
+    <!--Highscore table-->
+    <div class="highscore"></div>
+    <footer>
+
+    </footer>    
     <script src="assets/js/script.js"></script>
 </body>
 </html>
