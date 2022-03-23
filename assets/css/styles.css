@@ -6,6 +6,10 @@ body {
 .heading {
     text-align: center;
     line-height: 50px;
+}
+
+h1 > a {
+    text-decoration: none;
     color: whitesmoke;
 }
 
