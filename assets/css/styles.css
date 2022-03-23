@@ -1,5 +1,7 @@
 body {
     background-image: url('../image/pexels-ylanite-koppens-697662\-medium.jpg');
+    justify-content: center;
+    align-items: center;
     }
 
 .heading {
@@ -17,8 +19,10 @@ h1 > a {
 .game-area {
     width: 80vw;
     max-width: 1300px;
-    height: 60vh;
+    height: 65vh;
     margin: 0 auto;
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.7);
     background-color: whitesmoke;
 }
 
@@ -60,8 +64,6 @@ img {
 .game-introduction > h2, p, .username {
     text-align: center;
 }
-
-
 
 /*---Specific quiz area style---*/
 .answer-btns {
