@@ -9,6 +9,8 @@ body {
     color: whitesmoke;
 }
 
+/* Style game area */
+
 .game-area {
     width: 80vw;
     max-width: 1300px;
@@ -70,6 +72,10 @@ body {
     width: 7rem;
     height: 2rem;
     margin-top: 5%;
+    /*Grid code from Stack Overflow. See code in README.md Credit section.*/
     grid-area: inner-div;
     
 }
+
+
+/* Media queries*/

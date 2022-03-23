@@ -1,4 +1,7 @@
 //DOMContentLoaded
+document.addEventListener("DOMContentLoaded", function() {
+    
+}
 
 function startGame(){
 
@@ -33,5 +36,5 @@ function highscore() {
 }
 
 function playAgain() {
-    
+
 }
