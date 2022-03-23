@@ -10,23 +10,22 @@
     <title>FLAG-IT!</title>
 </head>
 <body>
-    <!--Name of the game-->
     <header>
         <h1 class="heading">FLAG-IT!</h1>
     </header>
     <!--Game over area.-->
     <div class="game-area">
-        <!--Score area-->
-        <div class="score">Your Score:</div>
+        <!--Score area hidden on game over page-->
+        <div class="score hidden">Your Score:</div>
         <!--Flag question-->
         <div class="flag"></div>
-        <!--Count down timer-->
-        <div class="timer">Seconds left:</div>
-        <!--Four buttons with suggested answers-->
+        <!--Count down timer hidden on game over page-->
+        <div class="timer hidden">Seconds left:</div>
+        <!--game over information-->
         <div class="game over">
-            
+            <h2 class="game-over">GAME OVER!</h2>            
         </div>
-        <!--Start/Next question/Play again version of button-->
+        <!--Play again button-->
         <div class="event-btn">
             <button class="play-again btn-stack" onclick="window.location.href='quiz.html';"></button>
         </div>

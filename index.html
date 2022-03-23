@@ -10,34 +10,31 @@
     <title>FLAG-IT!</title>
 </head>
 <body>
-    <!--Name of the game-->
     <header>
         <h1 class="heading">FLAG-IT!</h1>
     </header>
-    <!--Introdution page at the start of the loaded game-->
+    
     <div class="game-area">
-        <!--Score area-->
-        <div class="score">Your Score:</div>
-        <!--Flag question-->
+        <!--Score area hidden on start page-->
+        <div class="score hidden">Your Score:</div>
+        <!--Image of start flag-->
         <div class="flag">
             <img src="assets/image/_con.png" alt="Flag of commonwealth of Nations">
         </div>
-        <!--Count down timer-->
-        <div class="timer">Seconds left:</div>
-        <!--Four buttons with suggested answers-->
+        <!--Count down timer hidden on start page-->
+        <div class="timer hidden">Seconds left:</div>
+        <!--Introdution of the game-->
         <div class="game-introduction">
             <h2 class="welcome"></h2>
             <p class="how-to"></p>
             <label for="user">Please enter your username:</label>
             <input type="text" class="username" id="user">
         </div>
-        <!--Start/Next question/Play again version of button-->
+        <!--Start game button-->
         <div class="event-btn">
         <button class="start btn-stack" onclick="window.location.href='quiz.html';"></button>
-        
         </div>
     </div>
-   
     <!--Highscore table-->
     <div class="highscore"></div>
     <footer>

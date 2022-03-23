@@ -31,9 +31,10 @@ body {
     justify-content: center;
 }
 
-.img {
-    width: 580px;
-    height: 348px;
+img {
+    width: 60vw;
+    max-width: 580px;
+    height: auto;
     
 }
 
@@ -73,5 +74,9 @@ body {
     margin-top: 5%;  
 }
 
+/*Hidden functions by default at start and end of game*/
+.hidden {
+    color: transparent;
+}
 
 /* Media queries*/
