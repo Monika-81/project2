@@ -25,14 +25,24 @@
         <div class="timer hidden">Seconds left:</div>
         <!--Introdution of the game-->
         <div class="game-introduction">
-            <h2 class="welcome"></h2>
-            <p class="how-to"></p>
-            <label for="user">Please enter your username:</label>
-            <input type="text" class="username" id="user">
+            <h2 class="welcome">Welcome!</h2>
+            <p class="how-to">Rules of the game:
+                <ul>
+                    <li>Guess the country of the flag!</li>
+                    <li>There are three levels of the game: EASY, MEDIUM and HARD.</li>
+                    <li>Each level got 10 questions and each flag has four possible answers. But you only got 10 sekonds to guess the answer!</li> 
+                    <li>If you get 70% of the answers correct you can move to the next level (or you can start over).</li>
+                    <li>At the end of the game you get your name at the highscore list if you are one of the top three players!</li>
+                </ul>
+            </p>
+            <div class="username">
+            <label for="user" >Please enter your username:</label>
+            <input type="text" id="user">
+            </div>
         </div>
         <!--Start game button-->
         <div class="event-btn">
-        <button class="start btn-stack" onclick="window.location.href='quiz.html';"></button>
+        <button class="start btn-stack" onclick="window.location.href='quiz.html';">Start the game!</button>
         </div>
     </div>
     <!--Highscore table-->

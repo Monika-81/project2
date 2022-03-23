@@ -1,4 +1,3 @@
-
 body {
     background-image: url('../image/pexels-ylanite-koppens-697662\-medium.jpg');
     }
@@ -13,7 +12,7 @@ h1 > a {
     color: whitesmoke;
 }
 
-/* Style game area */
+/*---Global style to game area---*/
 
 .game-area {
     width: 80vw;
@@ -34,12 +33,10 @@ h1 > a {
     display: flex;
     justify-content: center;
 }
-
 img {
     width: 60vw;
     max-width: 580px;
-    height: auto;
-    
+    height: auto;    
 }
 
 .timer {
@@ -49,6 +46,24 @@ img {
     text-align: center;
 }
 
+/*---Specific start game area style---*/
+
+.game-introduction {
+    width: 60vw;
+    max-width: 580px;
+    height: auto;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;      
+}
+
+.game-introduction > h2, p, .username {
+    text-align: center;
+}
+
+
+
+/*---Specific quiz area style---*/
 .answer-btns {
     width: 60%;
     margin: auto;
