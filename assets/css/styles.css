@@ -1,15 +1,75 @@
+
 body {
-    background-color: bisque;
-}
+    background-image: url('../image/pexels-ylanite-koppens-697662\-medium.jpg');
+    }
 
 .heading {
     text-align: center;
+    line-height: 40px;
+    color: whitesmoke;
 }
 
 .game-area {
     width: 80vw;
-    max-width: 1500px;
+    max-width: 1300px;
     height: 60vh;
     margin: 0 auto;
     background-color: whitesmoke;
+}
+
+.score {
+    width: 40%;
+    line-height: 50px;
+    margin: auto;
+    text-align: center;
+}
+
+.flag {
+    width: 40vw;
+    height: 30vh;
+    margin: auto;
+    background-color: aqua;
+}
+
+.timer {
+    width: 40%;
+    line-height: 50px;
+    margin: auto;
+    text-align: center;
+}
+
+.answer-btns {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.btn-a-b, .btn-c-d {
+    display: flex;
+    justify-content: space-around;
+}
+
+.answer-btn {
+    width: 7rem;
+    height: 2rem;
+    margin-top: 5%;
+}
+
+.event-btn {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    
+    /*Grid code from Stack Overflow. See code in README.md Credit section.*/
+    display: grid;
+    place-items: center;
+    grid-template-areas: "inner-div";
+}
+
+.btn-stack {
+    width: 7rem;
+    height: 2rem;
+    margin-top: 5%;
+    grid-area: inner-div;
+    
 }
