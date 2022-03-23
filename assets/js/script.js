@@ -1,14 +1,26 @@
+const start = document.getElementById('start');
+const username = document.getElementById('user');
+
+
+
 //DOMContentLoaded then start page interaction
 document.addEventListener("DOMContentLoaded", function() {
-    let start = document.getElementById('start');
-    let username = document.getElementById('user');
-
+  
     //user.addEventListener(...);
-    start.addEventListener('click', startGame() );
-}
+    start.addEventListener('click', function () {
+        console.log("Game started"); })
+})
 
 function startGame(){
     document.getElementsByClassName('hidden').style.color = "black";
+    
+
+    let nextQuestion = easyQuestions[0].value;
+    let flag = getElementsByClassName('flag');
+
+    flag.textContent = nextQuestion;
+
+
 }
 
 function quizQuestions() {
