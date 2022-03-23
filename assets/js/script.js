@@ -1,6 +1,6 @@
 //DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function() {
-    
+
 }
 
 function startGame(){

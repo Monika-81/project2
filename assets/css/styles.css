@@ -5,7 +5,7 @@ body {
 
 .heading {
     text-align: center;
-    line-height: 40px;
+    line-height: 50px;
     color: whitesmoke;
 }
 
@@ -27,10 +27,14 @@ body {
 }
 
 .flag {
-    width: 40vw;
-    height: 30vh;
-    margin: auto;
-    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    width: 580px;
+    height: 348px;
+    
 }
 
 .timer {
@@ -61,20 +65,12 @@ body {
     width: 60%;
     margin: auto;
     text-align: center;
-    
-    /*Grid code from Stack Overflow. See code in README.md Credit section.*/
-    display: grid;
-    place-items: center;
-    grid-template-areas: "inner-div";
 }
 
 .btn-stack {
     width: 7rem;
     height: 2rem;
-    margin-top: 5%;
-    /*Grid code from Stack Overflow. See code in README.md Credit section.*/
-    grid-area: inner-div;
-    
+    margin-top: 5%;  
 }
 
 
