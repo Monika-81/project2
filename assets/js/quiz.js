@@ -3,14 +3,12 @@ let timer = document.getElementsByClassName('timer');
 
 const maxQuestions = 10;
 const flagElement = document.getElementById('flags');
-// const answerButtons = document.getElementsByClassName('answer-btn');
-// const answers = Array.from(document.getElementsByClassName('answer-btn'));
 const aBtn = document.getElementById('a');
 const bBtn = document.getElementById('b');
 const cBtn = document.getElementById('c');
 const dBtn = document.getElementById('d');
 
-
+//Game start after loaded content
 document.addEventListener("DOMContentLoaded", startGame); 
 
 function startGame () { 
@@ -22,31 +20,96 @@ function startGame () {
   nextQuestion ();
 }
 
+/** 
+ * Shuffels next question and calculates current question index
+ * Removes last question for no repition
+ * Code credit: 'Learn {to} Code' at Youtube, see README.md 
+ */ 
+
 function nextQuestion () {
   currentQuestionIndex ++;
+
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
   randomQuestion = availableQuestions[questionIndex];
   flagElement.innerHTML = randomQuestion.question;
+
   aBtn.innerHTML = randomQuestion.a;
   bBtn.innerHTML = randomQuestion.b;
   cBtn.innerHTML = randomQuestion.c;
   dBtn.innerHTML = randomQuestion.d;  
+
+  availableQuestions.splice(currentQuestionIndex, 1);
 }
-  /*
+
+/** 
+ * Checks for users answer
+ * Turns chosen button red or green and disables answer buttons for further guessing
+ * Calculates score if correct answer
+ */ 
+
+aBtn.addEventListener("click", checkAnswer);
+bBtn.addEventListener("click", checkAnswer);
+cBtn.addEventListener("click", checkAnswer);
+dBtn.addEventListener("click", checkAnswer);
+
+function checkAnswer(event) {
+  let selectedChoice = event.target;
+  let selectedAnswer = selectedChoice.dataset.type;
+  let answerButtons = document.getElementsByClassName('answer-btns');
+
+  if (selectedAnswer === randomQuestion.answer) {
+    selectedChoice.style.backgroundColor = 'green';
+    aBtn.classList.add('disable');
+    bBtn.classList.add('disable');
+    cBtn.classList.add('disable');
+    dBtn.classList.add('disable');
+    // calculateScore();
+
+  } else {
+    selectedChoice.style.backgroundColor = 'red';
+    aBtn.classList.add('disable');
+    bBtn.classList.add('disable');
+    cBtn.classList.add('disable');
+    dBtn.classList.add('disable');
+  }
 }
 
-
-
-// function checkAnswer() {
-
-// }
-
+/**
+ * When the user clicks the next button they either get to next question or next level/Game over.
+ */
+let next = document.getElementById('next');
+next.addEventListener('click', function(event) {
+  if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
+  //go to next lvl or game over
+    console.log('next level')
+  } else { 
+      aBtn.classList.remove('disable');
+      aBtn.style.backgroundColor ="white";
+      bBtn.classList.remove('disable');
+      bBtn.style.backgroundColor ="white";
+      cBtn.classList.remove('disable');
+      cBtn.style.backgroundColor ="white";
+      dBtn.classList.remove('disable');
+      dBtn.style.backgroundColor ="white";
+      console.log(currentQuestionIndex);
+      nextQuestion(); 
+    }
+  })
+  
 // function calculateScore() {
 
 // }
 
 
 // function nextLevel() {
+ // aBtn.classList.remove('disable');
+  // aBtn.style.backgroundColor ="white";
+  // bBtn.classList.remove('disable');
+  // bBtn.style.backgroundColor ="white";
+  // cBtn.classList.remove('disable');
+  // cBtn.style.backgroundColor ="white";
+  // dBtn.classList.remove('disable');
+  // dBtn.style.backgroundColor ="white";
 
 // }
 
@@ -75,4 +138,4 @@ const easyQuestions = [
     d: "Sri Lanka",
     answer: 'c',
   }
-] ;
+] 

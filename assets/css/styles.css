@@ -100,4 +100,9 @@ img {
     color: transparent;
 }
 
+/*Disabled buttons after answering a question*/
+.disable {
+    pointer-events: none;
+}
+
 /* Media queries*/
