@@ -38,6 +38,8 @@ Features<br>
 Technologies<br>
 Testing<br>
 
+felsök med att kommentera ut script + console.log
+
 bug
 - start.eventlistener did not work. wrong attribute. Change from class to id to match script.
 - onclick in html - wanted script in js. found right anwser in js script with help of https://stackoverflow.com/questions/41410958/open-a-new-html-page-in-a-js-function-and-then-write-some-html-on-it
@@ -49,6 +51,10 @@ Deployment<br>
 
 
 Credit 
+
+<!-- array.from
+https://www.w3schools.com/jsref/jsref_from.asp 
+<br> quiz.js:5   ```array.from``` -->
 
 flexbox
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/

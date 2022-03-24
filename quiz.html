@@ -18,18 +18,20 @@
         <!--Score area-->
         <div class="score">Your Score:</div>
         <!--Flag question-->
-        <div class="flag"></div>
+        <div class="flag" id="flags">
+            <picture></picture>
+        </div>
         <!--Count down timer-->
         <div class="timer">Seconds left:</div>
         <!--Four buttons with suggested answers-->
         <div class="answer-btns">
             <div class="btn-a-b">
-                <button class="answer-btn"></button>
-                <button class="answer-btn"></button>
+                <button class="answer-btn" data-type="A">Answer A</button>
+                <button class="answer-btn" data-type="B">Answer B</button>
             </div>
             <div class="btn-c-d">
-                <button class="answer-btn"></button>
-                <button class="answer-btn"></button>
+                <button class="answer-btn" data-type="C">Answer C</button>
+                <button class="answer-btn" data-type="D">Answer D</button>
             </div>
         </div>
         <!--Next question button-->
@@ -39,7 +41,6 @@
     </div>
     <!--Highscore table-->
     <div class="highscore"></div>  
-    <script src="assets/js/questions.js"></script>
     <script src="assets/js/quiz.js"></script>
 </body>
 </html>
