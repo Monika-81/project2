@@ -1,6 +1,4 @@
 let randomQuestion, currentQuestionIndex, availableQuestions;
-let timer = document.getElementsByClassName('timer');
-
 const score = document.getElementById('score');
 const maxQuestions = 10;
 const flagElement = document.getElementById('flags');
@@ -15,7 +13,6 @@ document.addEventListener("DOMContentLoaded", startGame);
 function startGame () { 
   console.log('started');
   currentQuestionIndex = 0;
-  timer = 0;
   availableQuestions = [...easyQuestions];
   nextQuestion ();
 }
@@ -28,6 +25,7 @@ function startGame () {
 
 function nextQuestion () {
   currentQuestionIndex ++;
+  // countdownTimer();
 
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
   randomQuestion = availableQuestions[questionIndex];
@@ -80,8 +78,8 @@ function checkAnswer(event) {
 let next = document.getElementById('next');
 next.addEventListener('click', function(event) {
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
-  //go to next lvl or game over
-    console.log('next level')
+    window.location = 'end.html';
+    console.log('game over');
   } else { 
       aBtn.classList.remove('disable');
       aBtn.style.backgroundColor ="white";
@@ -100,6 +98,14 @@ next.addEventListener('click', function(event) {
   let currentScore = parseInt(document.getElementById("score").innerText);
   score.innerText = (currentScore += 100);
 }
+
+// function countdownTimer() {
+//   let timer = document.getElementById('timer');
+//   let count = 15;
+//   setInterval(timer, 1000);
+//   timer.innerHtml = `${count + 'sec'}`;
+//   count--;
+// }
 
 
 // function nextLevel() {
