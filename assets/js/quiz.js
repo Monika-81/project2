@@ -1,6 +1,7 @@
-let randomQuestion, currentQuestionIndex, availableQuestions, score;
+let randomQuestion, currentQuestionIndex, availableQuestions;
 let timer = document.getElementsByClassName('timer');
 
+const score = document.getElementById('score');
 const maxQuestions = 10;
 const flagElement = document.getElementById('flags');
 const aBtn = document.getElementById('a');
@@ -15,7 +16,6 @@ function startGame () {
   console.log('started');
   currentQuestionIndex = 0;
   timer = 0;
-  score = 0;
   availableQuestions = [...easyQuestions];
   nextQuestion ();
 }
@@ -63,7 +63,7 @@ function checkAnswer(event) {
     bBtn.classList.add('disable');
     cBtn.classList.add('disable');
     dBtn.classList.add('disable');
-    // calculateScore();
+    calculateScore();
 
   } else {
     selectedChoice.style.backgroundColor = 'red';
@@ -96,9 +96,10 @@ next.addEventListener('click', function(event) {
     }
   })
   
-// function calculateScore() {
-
-// }
+ function calculateScore() {
+  let currentScore = parseInt(document.getElementById("score").innerText);
+  score.innerText = (currentScore += 100);
+}
 
 
 // function nextLevel() {
