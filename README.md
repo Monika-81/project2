@@ -37,6 +37,12 @@ Design<br>
 Features<br>
 Technologies<br>
 Testing<br>
+
+bug
+- start.eventlistener did not work. wrong attribute. Change from class to id to match script.
+- onclick in html - wanted script in js. found right anwser in js script with help of https://stackoverflow.com/questions/41410958/open-a-new-html-page-in-a-js-function-and-then-write-some-html-on-it
+- error messages when changing html file, missing elements error in js. had to spit js-files.
+
 Deployment<br>
 
 ---
@@ -47,31 +53,6 @@ Credit
 flexbox
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
-
-https://stackoverflow.com/questions/1909648/stacking-divs-on-top-of-each-other
-<br>
-https://jsfiddle.net/qg70bfdt/
-https://stackoverflow.com/users/3955557/mario-petrovic
-
-```
-.container {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-  background-color: yellow;
-  /* important part */
-  display: grid;
-  place-items: center;
-  grid-template-areas: "inner-div";
-}
-
-.inner {
-  height: 100px;
-  width: 100px;
-  /* important part */
-  grid-area: inner-div;
-}
-```
 
 Media
 
