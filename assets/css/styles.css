@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
     background-image: url('../image/pexels-ylanite-koppens-697662\-medium.jpg');
     justify-content: center;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
     }
 
 .heading {
     text-align: center;
     line-height: 50px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 6px;
 }
 
 h1 > a {
@@ -23,7 +29,7 @@ h1 > a {
     margin: 0 auto;
     border-radius: 10%;
     box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.7);
-    background-color: whitesmoke;
+    background-color: #e5cba8;
 }
 
 .score {
@@ -40,7 +46,8 @@ h1 > a {
 img {
     width: 60vw;
     max-width: 580px;
-    height: auto;    
+    max-height: 300px; 
+    box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.5);   
 }
 
 .timer {
@@ -52,7 +59,7 @@ img {
 
 /*---Specific start game area style---*/
 
-.game-introduction {
+.game-introduction, #next-div, #end-div {
     width: 60vw;
     max-width: 580px;
     height: auto;
@@ -61,7 +68,7 @@ img {
     margin-right: auto;      
 }
 
-.game-introduction > h2, p, .username {
+.game-introduction, .next-div > h2, p, .username {
     text-align: center;
 }
 
@@ -72,32 +79,50 @@ img {
     text-align: center;
 }
 
-.btn-a-b, .btn-c-d {
-    display: flex;
-    justify-content: space-around;
-}
-
 .answer-btn {
     width: 7rem;
     height: 2rem;
     margin-top: 5%;
+    margin: 2vh 5vw;
+    background-color: white;
 }
 
 .event-btn {
     width: 60%;
     margin: auto;
     text-align: center;
+    /*Grid code from Stack Overflow. See code in README.md Credit section.*/
+    display: grid;
+    place-items: center;
+    grid-template-areas: "inner-div";
 }
 
 .btn-stack {
     width: 7rem;
     height: 2rem;
-    margin-top: 5%;  
+    margin-top: 5%;
+    grid-area: inner-div;  
+    background-color: white;
+}
+
+/*---Stack divs --- Grid code from Stack Overflow. See code in README.md Credit section.*/
+.container {
+    display: grid;
+    place-items: center;
+    grid-template-areas: "inner-div";
+}
+
+.div-stack {
+    grid-area: inner-div;  
 }
 
 /*Hidden functions by default at start and end of game*/
 .hidden {
     color: transparent;
+}
+
+.stack {
+    display: none;
 }
 
 /*Disabled buttons after answering a question*/
