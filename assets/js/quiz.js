@@ -1,9 +1,12 @@
 let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
-let next = document.getElementById('next-btn');
+let nextBtn = document.getElementById('next-btn');
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
 let lvlBtn = document.getElementById('level-btn');
+let endDiv = document.getElementById('end-div');
+let againBtn = document.getElementById('again-btn');
+
 
 const score = document.getElementById('score');
 const maxQuestions = 10;
@@ -13,7 +16,7 @@ const bBtn = document.getElementById('b');
 const cBtn = document.getElementById('c');
 const dBtn = document.getElementById('d');
 
-//Game start after loaded content
+//----------------Game start after loaded content
 document.addEventListener("DOMContentLoaded", startGame); 
 
 function startGame () { 
@@ -21,6 +24,19 @@ function startGame () {
   currentQuestionIndex = 0;
   availableQuestions = [...easyQuestions];
   nextQuestion ();
+}
+
+//------Countdown timer------------------
+var count = 60;
+var time = setInterval(countdownTimer, 1000);
+
+function countdownTimer() {
+  document.getElementById('timer').innerHTML = 'Seconds left: ' + count;
+  count--;
+  if (count == -1) {
+    clearInterval(time);
+    // alert("Time out!! :(");
+    }
 }
 
 /** 
@@ -80,13 +96,13 @@ function checkAnswer(event) {
 /**
  * When the user clicks the next button they either get to next question or next level.
  */
-next.addEventListener('click', function(event) {
+nextBtn.addEventListener('click', function(event) {
 
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
     console.log(currentScore);
     clearInterval(time);
     nextLvl();
-} else { 
+  } else { 
       aBtn.classList.remove('disable');
       aBtn.style.backgroundColor ="white";
       bBtn.classList.remove('disable');
@@ -95,7 +111,6 @@ next.addEventListener('click', function(event) {
       cBtn.style.backgroundColor ="white";
       dBtn.classList.remove('disable');
       dBtn.style.backgroundColor ="white";
-
       console.log(currentQuestionIndex);
       nextQuestion(); 
     }
@@ -105,43 +120,97 @@ next.addEventListener('click', function(event) {
   score.innerText = (currentScore += 100);
 }
 
-
-
+//------- Next level----------------
 function nextLvl () {
   if (currentScore >= 700) {
     btnDiv.style.display = 'none';
-    next.style.display = 'none';
+    nextBtn.style.display = 'none';
     nextDiv.classList.remove('stack');
     lvlBtn.classList.remove('stack');
   } else {
-    window.location = 'end.html';
+    btnDiv.style.display = 'none';
+    nextBtn.style.display = 'none';
+    endDiv.classList.remove('stack');
+    againBtn.classList.remove('stack'); 
   }
-}
-  
-var count = 60;
-var time = setInterval(countdownTimer, 1000);
-
-function countdownTimer() {
-    document.getElementById('timer').innerHTML = 'Seconds left:' +count;
-    count--;
-    if (count == -1) {
-        clearInterval(time);
-        // alert("Time out!! :(");
-    }
+  againBtn.addEventListener('click', restartGame);
 }
 
 
-// function nextLevel() {
- // aBtn.classList.remove('disable');
-  // aBtn.style.backgroundColor ="white";
-  // bBtn.classList.remove('disable');
-  // bBtn.style.backgroundColor ="white";
-  // cBtn.classList.remove('disable');
-  // cBtn.style.backgroundColor ="white";
-  // dBtn.classList.remove('disable');
-  // dBtn.style.backgroundColor ="white";
 
-// }
+/**
+ * Function to restart game at game over
+ */
+function restartGame () {
+  btnDiv.style.display = 'block';
+  nextBtn.style.display = 'block';
+  endDiv.classList.add('stack');
+  againBtn.classList.add('stack');
+
+  aBtn.classList.remove('disable');
+  aBtn.style.backgroundColor ="white";
+  bBtn.classList.remove('disable');
+  bBtn.style.backgroundColor ="white";
+  cBtn.classList.remove('disable');
+  cBtn.style.backgroundColor ="white";
+  dBtn.classList.remove('disable');
+  dBtn.style.backgroundColor ="white";
+
+  startGame();
+}
+
+
+
+/**
+ * Function for starting medium level
+ */
+lvlBtn.addEventListener('click', nextMediumLevel);
+
+function nextMediumLevel () {
+  console.log('started next level');
+  currentQuestionIndex = 0;
+  availableQuestions = [...mediumQuestions];
+  nextMediumQuestion ();
+}
+
+ /** 
+ * Shuffels next medium question and calculates current question index
+ * Removes last question for no repition
+ * Code credit: 'Learn {to} Code' at Youtube, see README.md 
+ */ 
+
+function nextMediumQuestion () {
+  currentQuestionIndex ++;
+  countdownTimer();
+
+  btnDiv.style.display = 'block';
+  nextBtn.style.display = 'block';
+  nextDiv.classList.add('stack');
+  lvlBtn.classList.add('stack');
+
+  aBtn.classList.remove('disable');
+  aBtn.style.backgroundColor ="white";
+  bBtn.classList.remove('disable');
+  bBtn.style.backgroundColor ="white";
+  cBtn.classList.remove('disable');
+  cBtn.style.backgroundColor ="white";
+  dBtn.classList.remove('disable');
+  dBtn.style.backgroundColor ="white";
+
+  const mediumQuestionIndex = Math.floor(Math.random() * availableQuestions.length);
+  randomQuestion = availableQuestions[mediumQuestionIndex];
+  flagElement.innerHTML = randomQuestion.question;
+
+  aBtn.innerHTML = randomQuestion.a;
+  bBtn.innerHTML = randomQuestion.b;
+  cBtn.innerHTML = randomQuestion.c;
+  dBtn.innerHTML = randomQuestion.d;  
+
+  availableQuestions.splice(mediumQuestionIndex, 1);
+  console.log("so far so good");
+}
+
+
 
 /**
  * Quiz questions
@@ -149,7 +218,7 @@ function countdownTimer() {
  * Flag source from https://flagpedia.net/download/api
  */
 
-//Easy level questions, 30 in total but starts with 5 totest the code
+//Easy level questions, 30 in total.
 
 const easyQuestions = [ 
   {
@@ -393,3 +462,247 @@ const easyQuestions = [
     answer: 'd',
   }
 ] 
+
+//Easy level questions, 30 in total.
+const mediumQuestions = [
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/eg.png" alt="Egypt"></picture> `,
+    a: "Egypt",
+    b: "Azerbaijan",
+    c: "Nepal", 
+    d: "Peru", 
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/tz.png" alt="Tanzania"></picture> `,
+    a: "Iran", 
+    b: "Moldova",
+    c: "Tanzania",
+    d: "Sri Lanka",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/ke.png" alt="Kenya"></picture> `,
+    a: "Iceland", 
+    b: "Cyprus",
+    c: "Guam",
+    d: "Kenya",
+    answer: 'd',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/dz.png" alt="Algeria"></picture> `,
+    a: "Algeria", 
+    b: "Haiti",
+    c: "Albania",
+    d: "San Marino",
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/ma.png" alt="Morocco"></picture> `,
+    a: "Hungary", 
+    b: "Morocco",
+    c: "Angola",
+    d: "Fiji",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/mu.png" alt="Mauritius"></picture> `,
+    a: "Qatar", 
+    b: "Mauritius",
+    c: "Honduras",
+    d: "Andorra",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/tn.png" alt="Tunisia"></picture> `,
+    a: "Puerto Rico", 
+    b: "Slovakia",
+    c: "Tunisia",
+    d: "Malaysia",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/ly.png" alt="Libya"></picture> `,
+    a: "Venezuela", 
+    b: "Cambodia",
+    c: "Pakistan",
+    d: "Libya",
+    answer: 'd',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/hu.png" alt="Hungary"></picture> `,
+    a: "Hungary", 
+    b: "Romania",
+    c: "Maldives",
+    d: "Algeria",
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/bg.png" alt="Bulgaria"></picture> `,
+    a: "Greenland", 
+    b: "Bulgaria",
+    c: "Paraguay",
+    d: "Czechia",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/at.png" alt="Austria"></picture> `,
+    a: "Uruguay", 
+    b: "Monaco",
+    c: "Austria",
+    d: "Myanmar",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/rs.png" alt="Serbia"></picture> `,
+    a: "Serbia",
+    b: "Panama",
+    c: "Latvia", 
+    d: "Mali", 
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/al.png" alt="Albania"></picture> `,
+    a: "Sudan", 
+    b: "Jordan",
+    c: "Albania",
+    d: "Mauritius",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/mk.png" alt="North Macedonia"></picture> `,
+    a: "Burundi", 
+    b: "El Salvador",
+    c: "Lichtenstein",
+    d: "North Macedonia",
+    answer: 'd',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/cy.png" alt="Cyprus"></picture> `,
+    a: "Cyprus", 
+    b: "Indonesia",
+    c: "Madagascar",
+    d: "Iceland",
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/nz.png" alt="New Zealand"></picture> `,
+    a: "Ecuador", 
+    b: "New Zealand",
+    c: "Singapore",
+    d: "Philippines",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/id.png" alt="Indonesia"></picture> `,
+    a: "Malta", 
+    b: "Indonesia",
+    c: "Uruguay",
+    d: "Estonia",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/pk.png" alt="Pakistan"></picture> `,
+    a: "Colombia", 
+    b: "Syria",
+    c: "Pakistan",
+    d: "Senegal",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/vn.png" alt="Vietnam"></picture> `,
+    a: "Rwanda", 
+    b: "HongKong",
+    c: "Togo",
+    d: "Vietnam",
+    answer: 'd',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/ir.png" alt="Iran"></picture> `,
+    a: "Iran", 
+    b: "Laos",
+    c: "Albania",
+    d: "Bulgaria",
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/my.png" alt="Malaysia"></picture> `,
+    a: "French Polynesia", 
+    b: "Malaysia",
+    c: "Luxembourg",
+    d: "Costa Rica",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/np.png" alt="Nepal"></picture> `,
+    a: "Burkina Faso", 
+    b: "Uruguay",
+    c: "Nepal",
+    d: "Lesotho",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/kh.png" alt="Cambodia"></picture> `,
+    a: "Cambodia",
+    b: "Chad",
+    c: "Mauritana", 
+    d: "Suriname", 
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/lk.png" alt="Sri Lanka"></picture> `,
+    a: "Tonga", 
+    b: "Guyana",
+    c: "Sri Lanka",
+    d: "Seychelles",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/kz.png" alt="Kazakhstan"></picture> `,
+    a: "Armenia", 
+    b: "Mongolia",
+    c: "Burnei",
+    d: "Kazakhstan",
+    answer: 'd',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/jm.png" alt="Jamaica"></picture> `,
+    a: "Jamaica", 
+    b: "Colombia",
+    c: "Malawi",
+    d: "Tanzania",
+    answer: 'a',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/cu.png" alt="Cuba"></picture> `,
+    a: "Uganda", 
+    b: "Cuba",
+    c: "Mozambique",
+    d: "Belize",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/is.png" alt="Iceland"></picture> `,
+    a: "Norway", 
+    b: "Iceland",
+    c: "Georgia",
+    d: "Montenegro",
+    answer: 'b',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/ro.png" alt="Romania"></picture> `,
+    a: "Moldova", 
+    b: "Colombia",
+    c: "Romania",
+    d: "Lithuania",
+    answer: 'c',
+  },
+  {
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/cz.png" alt="Czechia"></picture> `,
+    a: "Slovakia", 
+    b: "Panama",
+    c: "North Korea",
+    d: "Czechia",
+    answer: 'd',
+  }
+]

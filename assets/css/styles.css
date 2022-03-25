@@ -108,7 +108,7 @@ img {
 }
 
 /*---Specific next level area style*/
-#next-div > h2 {
+#next-div, #end-div > h2 {
     text-align: center;
 }
 
