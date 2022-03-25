@@ -37,6 +37,7 @@ h1 > a {
     line-height: 50px;
     margin: auto;
     text-align: center;
+    line-height: 4rem;
 }
 
 .flag {
@@ -46,7 +47,7 @@ h1 > a {
 img {
     width: 60vw;
     max-width: 580px;
-    max-height: 300px; 
+    max-height: 280px; 
     box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.5);   
 }
 
@@ -55,6 +56,7 @@ img {
     line-height: 50px;
     margin: auto;
     text-align: center;
+    line-height: 3rem;
 }
 
 /*---Specific start game area style---*/
@@ -68,7 +70,7 @@ img {
     margin-right: auto;      
 }
 
-.game-introduction, .next-div > h2, p, .username {
+.game-introduction> h2, p, .username {
     text-align: center;
 }
 
@@ -104,6 +106,16 @@ img {
     grid-area: inner-div;  
     background-color: white;
 }
+
+/*---Specific next level area style*/
+#next-div > h2 {
+    text-align: center;
+}
+
+.smaller {
+    font-size: smaller;
+}
+
 
 /*---Stack divs --- Grid code from Stack Overflow. See code in README.md Credit section.*/
 .container {

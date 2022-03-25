@@ -95,7 +95,7 @@ next.addEventListener('click', function(event) {
       cBtn.style.backgroundColor ="white";
       dBtn.classList.remove('disable');
       dBtn.style.backgroundColor ="white";
-      
+
       console.log(currentQuestionIndex);
       nextQuestion(); 
     }
@@ -377,10 +377,10 @@ const easyQuestions = [
     answer: 'b',
   },
   {
-    question: ` <picture><img type="image/png" src="./assets/image/quiz/ch.png" alt="Switzerland"></picture> `,
+    question: ` <picture><img type="image/png" src="./assets/image/quiz/sa.png" alt="Saudi Arabia"></picture> `,
     a: "United Kingdom", 
     b: "Aruba",
-    c: "Switzerland",
+    c: "Saudi Arabia",
     d: "Cambodia",
     answer: 'c',
   },
