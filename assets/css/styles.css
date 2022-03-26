@@ -53,12 +53,15 @@ img {
 
 .counting-elm {
     display: flex;
-    justify-content: space-between;
-    width: 30vw;
-    line-height: 50px;
+    flex-flow: row wrap;
+    justify-content:center;
     margin: auto;
     text-align: center;
     line-height: 3rem;
+}
+
+.flex {
+    margin: 0 20px;
 }
 
 /*---Specific start game area style---*/

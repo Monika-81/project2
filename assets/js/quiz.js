@@ -29,12 +29,16 @@ document.addEventListener("DOMContentLoaded", startGame);
 
 function startGame () { 
   console.log('New game started');
+  availableQuestions = [...easyQuestions];
+  reset();
+  nextQuestion ();
+}
+
+function reset() {
   currentQuestionIndex = 0;
   qCounter.innerText = 1;
-  availableQuestions = [...easyQuestions];
   resetTimer();
   startCountdown();
-  nextQuestion ();
 }
 
 //------Countdown timer------------------
@@ -50,10 +54,7 @@ function countdownTimer() {
   if (count == -1) {
     clearInterval(time);
     alert("Time out!! :(");
-    btnDiv.style.display = 'none';
-    nextBtn.style.display = 'none';
-    endDiv.classList.remove('stack');
-    againBtn.classList.remove('stack'); 
+    gameOver();
   }
 }
 
@@ -105,24 +106,36 @@ function checkAnswer(event) {
   
   if (selectedAnswer === randomQuestion.answer) {
     selectedChoice.style.backgroundColor = 'green';
-    aBtn.classList.add('disable');
-    bBtn.classList.add('disable');
-    cBtn.classList.add('disable');
-    dBtn.classList.add('disable');
+    disableAnswerBtns();
     nextBtn.disabled = false;
     mediumNextBtn.disabled = false;
     calculateScore();
 
   } else {
     selectedChoice.style.backgroundColor = 'red';
-    aBtn.classList.add('disable');
-    bBtn.classList.add('disable');
-    cBtn.classList.add('disable');
-    dBtn.classList.add('disable');
+    disableAnswerBtns();
     nextBtn.disabled = false;
     mediumNextBtn.disabled = false;
   }
 }
+
+function disableAnswerBtns() {
+  aBtn.classList.add('disable');
+  bBtn.classList.add('disable');
+  cBtn.classList.add('disable');
+  dBtn.classList.add('disable');
+} 
+
+function resetAnswerBtns() {  
+  aBtn.classList.remove('disable');
+  aBtn.style.backgroundColor ="white";
+  bBtn.classList.remove('disable');
+  bBtn.style.backgroundColor ="white";
+  cBtn.classList.remove('disable');
+  cBtn.style.backgroundColor ="white";
+  dBtn.classList.remove('disable');
+  dBtn.style.backgroundColor ="white";
+} 
 
 //calculates score
 function calculateScore() {
@@ -139,20 +152,14 @@ nextBtn.addEventListener('click', function(event) {
     clearInterval(time);
     nextLvl();
   } else { 
-      aBtn.classList.remove('disable');
-      aBtn.style.backgroundColor ="white";
-      bBtn.classList.remove('disable');
-      bBtn.style.backgroundColor ="white";
-      cBtn.classList.remove('disable');
-      cBtn.style.backgroundColor ="white";
-      dBtn.classList.remove('disable');
-      dBtn.style.backgroundColor ="white";
+      resetAnswerBtns();
       nextBtn.disabled = true;
       console.log(currentQuestionIndex);
       qCounter.innerText = (currentQuestionIndex + 1);
       nextQuestion(); 
     }
   })
+     
 
 //------- Next level----------------
 function nextLvl() {
@@ -162,11 +169,16 @@ function nextLvl() {
     nextDiv.classList.remove('stack');
     mediumLvlBtn.classList.remove('stack');
   } else {
-    btnDiv.style.display = 'none';
-    nextBtn.style.display = 'none';
-    endDiv.classList.remove('stack');
-    againBtn.classList.remove('stack'); 
+      gameOver();
   }
+}
+
+//------Game Over------
+function gameOver() {
+  btnDiv.style.display = 'none';
+  nextBtn.style.display = 'none';
+  endDiv.classList.remove('stack');
+  againBtn.classList.remove('stack'); 
 }
 
 /**
@@ -177,16 +189,7 @@ function restartGame () {
   nextBtn.style.display = 'block';
   endDiv.classList.add('stack');
   againBtn.classList.add('stack');
-
-  aBtn.classList.remove('disable');
-  aBtn.style.backgroundColor ="white";
-  bBtn.classList.remove('disable');
-  bBtn.style.backgroundColor ="white";
-  cBtn.classList.remove('disable');
-  cBtn.style.backgroundColor ="white";
-  dBtn.classList.remove('disable');
-  dBtn.style.backgroundColor ="white";
-
+  resetAnswerBtns();
   startGame();
 }
 
@@ -197,11 +200,8 @@ mediumLvlBtn.addEventListener('click', nextMediumLevel);
 
 function nextMediumLevel () {
   console.log('started medium level');
-  currentQuestionIndex = 0;
   availableQuestions = [...mediumQuestions];
-  resetTimer ();
-  startCountdown ();
-  qCounter.innerText = 1;
+  reset();
   nextMediumQuestion ();
 }
 
@@ -220,14 +220,7 @@ function nextMediumQuestion () {
   mediumLvlBtn.classList.add('stack');
   mediumNextBtn.disabled = true;
 
-  aBtn.classList.remove('disable');
-  aBtn.style.backgroundColor ="white";
-  bBtn.classList.remove('disable');
-  bBtn.style.backgroundColor ="white";
-  cBtn.classList.remove('disable');
-  cBtn.style.backgroundColor ="white";
-  dBtn.classList.remove('disable');
-  dBtn.style.backgroundColor ="white";
+  resetAnswerBtns();
 
   const mediumQuestionIndex = Math.floor(Math.random() * availableQuestions.length);
   randomQuestion = availableQuestions[mediumQuestionIndex];
@@ -249,14 +242,7 @@ mediumNextBtn.addEventListener('click', function(event) {
     clearInterval(time);
     nextNextLvl();
   } else { 
-      aBtn.classList.remove('disable');
-      aBtn.style.backgroundColor ="white";
-      bBtn.classList.remove('disable');
-      bBtn.style.backgroundColor ="white";
-      cBtn.classList.remove('disable');
-      cBtn.style.backgroundColor ="white";
-      dBtn.classList.remove('disable');
-      dBtn.style.backgroundColor ="white";
+      resetAnswerBtns();
       console.log(currentQuestionIndex);
       qCounter.innerText = (currentQuestionIndex + 1);
       nextMediumQuestion(); 
@@ -273,10 +259,7 @@ function nextNextLvl() {
     nextDiv.classList.remove('stack');
     hardLvlBtn.classList.remove('stack');
   } else {
-    btnDiv.style.display = 'none';
-    nextBtn.style.display = 'none';
-    endDiv.classList.remove('stack');
-    againBtn.classList.remove('stack'); 
+    gameOver();
   }
 }
 
@@ -287,11 +270,8 @@ function nextNextLvl() {
 
  function nextHardLevel () {
    console.log('started hard level');
-   currentQuestionIndex = 0;
    availableQuestions = [...hardQuestions];
-   resetTimer ();
-   startCountdown ();
-   qCounter.innerText = 1;
+   reset();
    nextHardQuestion ();
  }
 
@@ -304,14 +284,7 @@ function nextNextLvl() {
   hardLvlBtn.classList.add('stack');
   hardNextBtn.disabled = true;
 
-  aBtn.classList.remove('disable');
-  aBtn.style.backgroundColor ="white";
-  bBtn.classList.remove('disable');
-  bBtn.style.backgroundColor ="white";
-  cBtn.classList.remove('disable');
-  cBtn.style.backgroundColor ="white";
-  dBtn.classList.remove('disable');
-  dBtn.style.backgroundColor ="white";
+  resetAnswerBtns();
 
   const hardQuestionIndex = Math.floor(Math.random() * availableQuestions.length);
   randomQuestion = availableQuestions[hardQuestionIndex];
@@ -333,14 +306,7 @@ hardNextBtn.addEventListener('click', function(event) {
     clearInterval(time);
     nextNextLvl();
   } else { 
-      aBtn.classList.remove('disable');
-      aBtn.style.backgroundColor ="white";
-      bBtn.classList.remove('disable');
-      bBtn.style.backgroundColor ="white";
-      cBtn.classList.remove('disable');
-      cBtn.style.backgroundColor ="white";
-      dBtn.classList.remove('disable');
-      dBtn.style.backgroundColor ="white";
+      resetAnswerBtns();
       console.log(currentQuestionIndex);
       qCounter.innerText = (currentQuestionIndex + 1);
       nextHardQuestion(); 
