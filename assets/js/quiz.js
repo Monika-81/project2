@@ -32,6 +32,7 @@ function startGame () {
   currentQuestionIndex = 0;
   qCounter.innerText = 1;
   availableQuestions = [...easyQuestions];
+  resetTimer();
   startCountdown();
   nextQuestion ();
 }
