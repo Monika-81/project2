@@ -113,6 +113,7 @@ function checkAnswer(event) {
 
   } else {
     selectedChoice.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
+    rightAnswer();
     disableAnswerBtns();
     nextBtn.disabled = false;
     mediumNextBtn.disabled = false;
@@ -136,6 +137,18 @@ function resetAnswerBtns() {
   dBtn.classList.remove('disable');
   dBtn.style.backgroundColor ="white";
 } 
+
+function rightAnswer () {
+  if (aBtn.dataset.type == randomQuestion.answer) {
+    aBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } else if (bBtn.dataset.type == randomQuestion.answer) {
+    bBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } else if (cBtn.dataset.type == randomQuestion.answer) {
+    cBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } else if (dBtn.dataset.type == randomQuestion.answer) {
+    dBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } 
+}
 
 //calculates score
 function calculateScore() {
