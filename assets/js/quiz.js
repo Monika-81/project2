@@ -253,6 +253,66 @@ mediumNextBtn.addEventListener('click', function(event) {
     }
   })
 
+function nextNextLvl() {
+  if (currentScore >= 1500) {
+    btnDiv.style.display = 'none';
+    nextBtn.style.display = 'none';
+    nextDiv.classList.remove('stack');
+    hardLvlBtn.classList.remove('stack');
+  } else {
+    btnDiv.style.display = 'none';
+    nextBtn.style.display = 'none';
+    endDiv.classList.remove('stack');
+    againBtn.classList.remove('stack'); 
+  }
+}
+
+/**
+ * Function for starting hard level
+ */
+ hardLvlBtn.addEventListener('click', nextMediumLevel);
+
+ function nextMediumLevel () {
+   console.log('started hard level');
+   currentQuestionIndex = 0;
+   availableQuestions = [...hardQuestions];
+   resetTimer ();
+   startCountdown ();
+   nextHardQuestion ();
+ }
+
+ function nextHardQuestion () {
+  currentQuestionIndex ++;
+
+  btnDiv.style.display = 'block';
+  hardNextBtn.classList.remove('stack');
+  nextDiv.classList.add('stack');
+  hardLvlBtn.classList.add('stack');
+  hardNextBtn.disabled = true;
+
+  aBtn.classList.remove('disable');
+  aBtn.style.backgroundColor ="white";
+  bBtn.classList.remove('disable');
+  bBtn.style.backgroundColor ="white";
+  cBtn.classList.remove('disable');
+  cBtn.style.backgroundColor ="white";
+  dBtn.classList.remove('disable');
+  dBtn.style.backgroundColor ="white";
+
+  const hardQuestionIndex = Math.floor(Math.random() * availableQuestions.length);
+  randomQuestion = availableQuestions[hardQuestionIndex];
+  flagElement.innerHTML = randomQuestion.question;
+
+  aBtn.innerHTML = randomQuestion.a;
+  bBtn.innerHTML = randomQuestion.b;
+  cBtn.innerHTML = randomQuestion.c;
+  dBtn.innerHTML = randomQuestion.d;  
+
+  availableQuestions.splice(hardQuestionIndex, 1);
+  console.log("so far so good again");
+}
+
+
 /**
  * Quiz questions
  * Flag + 4 questions
