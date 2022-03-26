@@ -1,12 +1,16 @@
 let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
-let nextBtn = document.getElementById('next-btn');
+
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
-let lvlBtn = document.getElementById('level-btn');
 let endDiv = document.getElementById('end-div');
-let againBtn = document.getElementById('again-btn');
 
+let nextBtn = document.getElementById('next-btn');
+let mediumNextBtn = document.getElementById('medium-next-btn');
+let hardNextBtn = document.getElementById('hard-next-btn');
+let mediumLvlBtn = document.getElementById('medium-level-btn');
+let hardLvlBtn = document.getElementById('hard-level-btn');
+let againBtn = document.getElementById('again-btn');
 
 const score = document.getElementById('score');
 const maxQuestions = 10;
@@ -120,13 +124,15 @@ nextBtn.addEventListener('click', function(event) {
   score.innerText = (currentScore += 100);
 }
 
+
+
 //------- Next level----------------
-function nextLvl () {
+function nextLvl() {
   if (currentScore >= 700) {
     btnDiv.style.display = 'none';
     nextBtn.style.display = 'none';
     nextDiv.classList.remove('stack');
-    lvlBtn.classList.remove('stack');
+    mediumLvlBtn.classList.remove('stack');
   } else {
     btnDiv.style.display = 'none';
     nextBtn.style.display = 'none';
@@ -164,10 +170,10 @@ function restartGame () {
 /**
  * Function for starting medium level
  */
-lvlBtn.addEventListener('click', nextMediumLevel);
+mediumLvlBtn.addEventListener('click', nextMediumLevel);
 
 function nextMediumLevel () {
-  console.log('started next level');
+  console.log('started medium level');
   currentQuestionIndex = 0;
   availableQuestions = [...mediumQuestions];
   nextMediumQuestion ();
@@ -184,9 +190,9 @@ function nextMediumQuestion () {
   countdownTimer();
 
   btnDiv.style.display = 'block';
-  nextBtn.style.display = 'block';
+  mediumNextBtn.classList.remove('stack');
   nextDiv.classList.add('stack');
-  lvlBtn.classList.add('stack');
+  mediumLvlBtn.classList.add('stack');
 
   aBtn.classList.remove('disable');
   aBtn.style.backgroundColor ="white";
@@ -209,6 +215,27 @@ function nextMediumQuestion () {
   availableQuestions.splice(mediumQuestionIndex, 1);
   console.log("so far so good");
 }
+
+mediumNextBtn.addEventListener('click', function(event) {
+
+  if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
+    console.log(currentScore);
+    clearInterval(time);
+    nextNextLvl();
+  } else { 
+      aBtn.classList.remove('disable');
+      aBtn.style.backgroundColor ="white";
+      bBtn.classList.remove('disable');
+      bBtn.style.backgroundColor ="white";
+      cBtn.classList.remove('disable');
+      cBtn.style.backgroundColor ="white";
+      dBtn.classList.remove('disable');
+      dBtn.style.backgroundColor ="white";
+      console.log(currentQuestionIndex);
+      nextMediumQuestion(); 
+    }
+  })
+
 
 
 
