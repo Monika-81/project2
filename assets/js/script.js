@@ -105,14 +105,14 @@ function checkAnswer(event) {
   let selectedAnswer = selectedChoice.dataset.type;
   
   if (selectedAnswer === randomQuestion.answer) {
-    selectedChoice.style.backgroundColor = 'green';
+    selectedChoice.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
     disableAnswerBtns();
     nextBtn.disabled = false;
     mediumNextBtn.disabled = false;
     calculateScore();
 
   } else {
-    selectedChoice.style.backgroundColor = 'red';
+    selectedChoice.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
     disableAnswerBtns();
     nextBtn.disabled = false;
     mediumNextBtn.disabled = false;

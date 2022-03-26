@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 /* general page style*/
 * {
@@ -11,15 +12,13 @@ body {
     background-image: url('../image/pexels-ylanite-koppens-697662\-medium.jpg');
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
-    }
-
-    
+    font-family: 'Poppins', sans-serif;
+    }    
 
 /*---game heading---*/
 
 .heading {
-    font-family: 'Titan One', cursive;
+    font-family: 'Aclonica', sans-serif;
     text-align: center;
     line-height: 3rem;
 }
@@ -51,8 +50,19 @@ a {
     margin: 20px 0 0;
 }
 
+h2 {
+    font-family: 'Aclonica', sans-serif;
+}
+
 p, li {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    list-style-type: none;
+}
+
+.fa-solid {
+    margin-right: 10px;
 }
 
 /*---game area---*/
@@ -63,10 +73,10 @@ p, li {
     height: auto;
     min-height: 50vh;
     padding: 10px 40px 40px;
-    margin: 5% auto;
+    margin: 2% auto;
     border-radius: 10%;
     box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.7);
-    background-color: #e5cba8;
+    background-color: #eedcc5;
 }
 
 .score {
@@ -79,10 +89,11 @@ p, li {
     display: flex;
     justify-content: center;
 }
+
 img {
-    width: 60vw;
-    max-width: 560px;
-    max-height: 280px; 
+    max-width: 60vw;
+    width: 500px;
+    height: 280px; 
     box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.5);   
 }
 
@@ -96,10 +107,8 @@ img {
 }
 
 .flex {
-    margin: 0 20px;
+    margin: 0 2vw;
 }
-
-
 
 /*---Specific quiz area style---*/
 .answer-btns {
@@ -109,11 +118,20 @@ img {
 }
 
 .answer-btn {
-    width: 7rem;
+    width: 8rem;
     height: 2rem;
     margin-top: 5%;
     margin: 2vh 5vw;
-    background-color: white;
+    cursor: pointer;
+    background-color: whitesmoke;
+    border-color: #d6d6e7;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.answer-btn:hover{
+    box-shadow: inset 0px 3px 7px #d6d6e7;
+    transform: translateY(2px);
 }
 
 .event-btn {
@@ -127,11 +145,15 @@ img {
 }
 
 .btn-stack {
-    width: 7rem;
-    height: 2rem;
+    width: 8rem;
+    height: 3rem;
     margin-top: 5%;
+    border-radius: 25px;
+    border-color: #d6d6e7;
+    cursor: pointer;
     grid-area: inner-div;  
     background-color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 /*---Specific next level area style*/
@@ -142,6 +164,19 @@ img {
 .smaller {
     font-size: smaller;
 }
+
+/*----submit to highscore list----*/
+
+#submit-btn {
+    width: 5rem;
+    border-radius: 25px;
+    border-color: #d6d6e7;
+    cursor: pointer;
+    grid-area: inner-div;  
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
 
 
 /*---Stack divs --- Grid code from Stack Overflow. See code in README.md Credit section.*/
@@ -155,10 +190,7 @@ img {
     grid-area: inner-div;  
 }
 
-/*Hidden functions by default at start and end of game*/
-.hidden {
-    color: transparent;
-}
+/*Hidden stack elements depending on game play*/
 
 .stack {
     display: none;
@@ -181,22 +213,48 @@ img {
         font-size: 18px;
     }
     
-    p, li {
-        font-size: 15px; 
+    p, li, #label, #submit-btn {
+        font-size: 13px;
+        line-height: unset;
+        letter-spacing: unset; 
     }
 
     .game-area {
         padding: 10px;
     }
 
+    img {
+        max-width: 250px;
+        max-height: 140px;
+    }
+
     .answer-btn {
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 2vw;
+        margin-right: 2vw;
     }
 }
 
-@media screen and (max-width: 300px) {
-    p {
+@media screen and (max-width: 400px) {
+    p, li, #label, #submit-btn {
+        font-size: 11px;
         margin: 0;
+    }
+
+    img {
+        width: 195px;
+        height: 95px;
+    }
+
+    .answer-btn {
+        width: 6rem;
+        font-size: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-stack {
+        width: 6rem;
+        height: 2rem;
+        font-size: 10px;        
     }
 }

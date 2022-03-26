@@ -15,7 +15,7 @@
         <h1 class="heading"><a href="index.html">Flag-along!</a></h1>
         <!--Score area-->
         <div class="score">
-            <p>Your Score: <span id="score">0</span></p>
+            <p>Your Score: <span id="score">0</span>p.</p>
         </div>
         <!--Flag question-->
         <div class="flag" id="flags">
@@ -45,14 +45,14 @@
             <div class="div-stack stack" id="next-div">
                 <h2>Next level!</h2>
                 <p>Conratulations to finishing this level! Now let's move on to the next level. Good luck!</p>
-                <p class="smaller">(If you'd like to start over, please click the game name "FLAG-iT" at the top of the screen.)</p>            
+                <p>(Do you rather like to start over? Click "<em>Flag-along</em>" at the top of the screen.)</p>            
             </div>
             <div class="div-stack stack" id="end-div">
                 <h2>GAME OVER!</h2> 
-                <p>Oh no! The game is over... Did you make it on the highscore list?</p>
+                <p>Oh no! The game is over... <i class="fa-solid fa-face-sad-tear"></i> Did you make it to the highscore list?</p>
                 <p>Please pick a username below and submit your score!</p> 
                 <div class="username">
-                    <label for="user" >Username:</label>
+                    <label for="user"id="label" >Username:</label>
                     <input type="text" id="user">
                     <button type="submit" id="submit-btn">Submit</button>
                 </div>
@@ -71,5 +71,7 @@
     <!--Highscore table-->
     <div class="highscore"></div>  
     <script src="assets/js/script.js"></script>
+    <!--font awesome script-->
+    <script src="https://kit.fontawesome.com/0676e6e141.js" crossorigin="anonymous"></script> 
 </body>
 </html>
