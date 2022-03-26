@@ -20,6 +20,9 @@ const bBtn = document.getElementById('b');
 const cBtn = document.getElementById('c');
 const dBtn = document.getElementById('d');
 
+//general event listners
+againBtn.addEventListener('click', restartGame);
+
 //----------------Game start after loaded content
 document.addEventListener("DOMContentLoaded", startGame); 
 
@@ -44,7 +47,11 @@ function countdownTimer() {
   if (count == -1) {
     clearInterval(time);
     alert("Time out!! :(");
-    }
+    btnDiv.style.display = 'none';
+    nextBtn.style.display = 'none';
+    endDiv.classList.remove('stack');
+    againBtn.classList.remove('stack'); 
+  }
 }
 
 function resetTimer() {
@@ -110,6 +117,11 @@ function checkAnswer(event) {
   }
 }
 
+//calculates score
+function calculateScore() {
+score.innerText = (currentScore += 100);
+}
+
 /**
  * When the user clicks the next button they either get to next question or next level.
  */
@@ -133,12 +145,6 @@ nextBtn.addEventListener('click', function(event) {
       nextQuestion(); 
     }
   })
-  
- function calculateScore() {
-  score.innerText = (currentScore += 100);
-}
-
-
 
 //------- Next level----------------
 function nextLvl() {
@@ -153,10 +159,7 @@ function nextLvl() {
     endDiv.classList.remove('stack');
     againBtn.classList.remove('stack'); 
   }
-  againBtn.addEventListener('click', restartGame);
 }
-
-
 
 /**
  * Function to restart game at game over
@@ -178,8 +181,6 @@ function restartGame () {
 
   startGame();
 }
-
-
 
 /**
  * Function for starting medium level
@@ -251,9 +252,6 @@ mediumNextBtn.addEventListener('click', function(event) {
       nextMediumQuestion(); 
     }
   })
-
-
-
 
 /**
  * Quiz questions
