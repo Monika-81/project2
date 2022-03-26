@@ -1,5 +1,6 @@
 let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
+let qCounter = document.getElementById('q-counter');
 
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", startGame);
 function startGame () { 
   console.log('New game started');
   currentQuestionIndex = 0;
+  qCounter.innerText = 1;
   availableQuestions = [...easyQuestions];
   startCountdown();
   nextQuestion ();
@@ -58,6 +60,10 @@ function resetTimer() {
   count = 59;
   document.getElementById('timer').innerHTML = count;
 }
+
+//----Question counter----
+
+
 
 /** 
  * Shuffels next question and calculates current question index
@@ -142,6 +148,7 @@ nextBtn.addEventListener('click', function(event) {
       dBtn.style.backgroundColor ="white";
       nextBtn.disabled = true;
       console.log(currentQuestionIndex);
+      qCounter.innerText = (currentQuestionIndex + 1);
       nextQuestion(); 
     }
   })
@@ -193,6 +200,7 @@ function nextMediumLevel () {
   availableQuestions = [...mediumQuestions];
   resetTimer ();
   startCountdown ();
+  qCounter.innerText = 1;
   nextMediumQuestion ();
 }
 
@@ -249,9 +257,13 @@ mediumNextBtn.addEventListener('click', function(event) {
       dBtn.classList.remove('disable');
       dBtn.style.backgroundColor ="white";
       console.log(currentQuestionIndex);
+      qCounter.innerText = (currentQuestionIndex + 1);
       nextMediumQuestion(); 
     }
   })
+
+
+//--------nextNext level-----
 
 function nextNextLvl() {
   if (currentScore >= 1500) {
@@ -270,14 +282,15 @@ function nextNextLvl() {
 /**
  * Function for starting hard level
  */
- hardLvlBtn.addEventListener('click', nextMediumLevel);
+ hardLvlBtn.addEventListener('click', nextHardLevel);
 
- function nextMediumLevel () {
+ function nextHardLevel () {
    console.log('started hard level');
    currentQuestionIndex = 0;
    availableQuestions = [...hardQuestions];
    resetTimer ();
    startCountdown ();
+   qCounter.innerText = 1;
    nextHardQuestion ();
  }
 
@@ -311,6 +324,27 @@ function nextNextLvl() {
   availableQuestions.splice(hardQuestionIndex, 1);
   console.log("so far so good again");
 }
+
+hardNextBtn.addEventListener('click', function(event) {
+
+  if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
+    console.log(currentScore);
+    clearInterval(time);
+    nextNextLvl();
+  } else { 
+      aBtn.classList.remove('disable');
+      aBtn.style.backgroundColor ="white";
+      bBtn.classList.remove('disable');
+      bBtn.style.backgroundColor ="white";
+      cBtn.classList.remove('disable');
+      cBtn.style.backgroundColor ="white";
+      dBtn.classList.remove('disable');
+      dBtn.style.backgroundColor ="white";
+      console.log(currentQuestionIndex);
+      qCounter.innerText = (currentQuestionIndex + 1);
+      nextHardQuestion(); 
+    }
+  })
 
 
 /**

@@ -21,8 +21,12 @@
         <div class="flag" id="flags">
             <picture></picture>
         </div>
-        <!--Count down timer-->
-        <div class="timer">Seconds left: <span id="timer"></span></div>
+        <div class="counting-elm">
+            <!--Current question number-->
+            <div class="question-counter flex">Question <span id="q-counter"></span> / 10.</div>
+            <!--Count down timer-->
+            <div class="timer flex">Seconds left: <span id="timer"></span></div>
+        </div>
         <!--Four buttons with suggested answers-->
         <div class="container">
             <div class="div-stack" id="btn-div">
@@ -37,7 +41,7 @@
             </div>
             <div class="div-stack stack" id="next-div">
                 <h2>Next level!</h2>
-                <p>Conratulations to finishing the first level! Now let's move on to the medium level.</p>
+                <p>Conratulations to finishing this level! Now let's move on to the next level.</p>
                 <p>Good luck!</p>
                 <p class="smaller">(If you'd like to start over, please click the game name "FLAG-iT" at the top of the screen.)</p>            
             </div>

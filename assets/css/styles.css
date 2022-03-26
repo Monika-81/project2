@@ -51,8 +51,10 @@ img {
     box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.5);   
 }
 
-.timer {
-    width: 40%;
+.counting-elm {
+    display: flex;
+    justify-content: space-between;
+    width: 30vw;
     line-height: 50px;
     margin: auto;
     text-align: center;
