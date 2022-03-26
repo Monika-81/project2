@@ -7,25 +7,28 @@
     <!--Google Fonts-->
 
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>FLAG-IT!</title>
+    <title>Flag-along!</title>
 </head>
 <body>
-    <header>
-        <h1 class="heading"><a href="index.html">FLAG-IT!</a></h1>
-    </header>
     <!--Game area.-->
     <div class="game-area">
+        <h1 class="heading"><a href="index.html">Flag-along!</a></h1>
         <!--Score area-->
-        <div class="score">Your Score: <span id="score">0</span></div>
+        <div class="score">
+            <p>Your Score: <span id="score">0</span></p>
+        </div>
         <!--Flag question-->
         <div class="flag" id="flags">
             <picture></picture>
         </div>
         <div class="counting-elm">
             <!--Current question number-->
-            <div class="question-counter flex">Question <span id="q-counter"></span> / 10.</div>
+            <div class="question-counter flex">
+                <p>Question <span id="q-counter"></span> / 10.</p></div>
             <!--Count down timer-->
-            <div class="timer flex">Seconds left: <span id="timer"></span></div>
+            <div class="timer flex">
+                <p>Seconds left: <span id="timer"></span></p>
+            </div>
         </div>
         <!--Four buttons with suggested answers-->
         <div class="container">
@@ -41,21 +44,20 @@
             </div>
             <div class="div-stack stack" id="next-div">
                 <h2>Next level!</h2>
-                <p>Conratulations to finishing this level! Now let's move on to the next level.</p>
-                <p>Good luck!</p>
+                <p>Conratulations to finishing this level! Now let's move on to the next level. Good luck!</p>
                 <p class="smaller">(If you'd like to start over, please click the game name "FLAG-iT" at the top of the screen.)</p>            
             </div>
             <div class="div-stack stack" id="end-div">
                 <h2>GAME OVER!</h2> 
-                <p>Oh no, the game is now over. Did you make it on the highscore-list?</p>
+                <p>Oh no! The game is over... Did you make it on the highscore list?</p>
                 <p>Please pick a username below and submit your score!</p> 
                 <div class="username">
                     <label for="user" >Username:</label>
                     <input type="text" id="user">
                     <button type="submit" id="submit-btn">Submit</button>
-                    </div>
-                </div>          
-            </div>
+                </div>
+            </div>          
+        </div>
         <!--Next question or restart event buttons-->
         <div class="event-btn">
             <button class="btn-stack" id="next-btn">Next question!</button>
@@ -68,6 +70,6 @@
     </div>
     <!--Highscore table-->
     <div class="highscore"></div>  
-    <script src="assets/js/quiz.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
