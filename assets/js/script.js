@@ -1,6 +1,8 @@
 let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
 let qCounter = document.getElementById('q-counter');
+let user = document.getElementById('user');
+let submit = document.getElementById('submit-btn');
 
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
@@ -191,7 +193,51 @@ function gameOver() {
   btnDiv.style.display = 'none';
   nextBtn.style.display = 'none';
   endDiv.classList.remove('stack');
-  againBtn.classList.remove('stack'); 
+  againBtn.classList.remove('stack');
+}
+
+function usernameValue(event) {
+  console.log(user.value);
+  console.log(currentScore);
+  highScore();
+}
+
+//----Fictive highscore array and function for name on highscore list---------
+let highScoreArray = [
+  {
+    username: 'xxx',
+    highscore: '123'
+  },
+  {
+    username: 'xxy',
+    highscore: '122'
+  },
+  {
+    username: 'xxz',
+    highscore: '121'
+  },
+  {
+    username: 'xxq',
+    highscore: '120'
+  },
+  {
+    username: 'xxw',
+    highscore: '190'
+  }
+]
+
+function highScore() {
+  if (currentScore > highScoreArray[4].highscore) {
+    highScoreArray.pop();
+    let newHighscore = { username: user.value, highscore: currentScore};
+    highScoreArray.push(newHighscore);
+  }
+
+  highScoreArray.sort(function(a,b) {
+    return b.highscore - a.highscore;
+  });
+
+  console.log(highScoreArray);
 }
 
 /**

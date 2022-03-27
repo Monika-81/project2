@@ -15,7 +15,7 @@
         <h1 class="heading"><a href="index.html">Flag-along!</a></h1>
         <!--Score area-->
         <div class="score">
-            <p>Your Score: <span id="score">0</span>p.</p>
+            <p>Your Score: <span id="score">0</span>p</p>
         </div>
         <!--Flag question-->
         <div class="flag" id="flags">
@@ -24,7 +24,7 @@
         <div class="counting-elm">
             <!--Current question number-->
             <div class="question-counter flex">
-                <p>Question <span id="q-counter"></span> / 10.</p></div>
+                <p>Question <span id="q-counter"></span> / 10</p></div>
             <!--Count down timer-->
             <div class="timer flex">
                 <p>Seconds left: <span id="timer"></span></p>
@@ -53,9 +53,10 @@
                 <p>Please pick a username below and submit your score!</p> 
                 <div class="username">
                     <label for="user"id="label" >Username:</label>
-                    <input type="text" id="user">
-                    <button type="submit" id="submit-btn">Submit</button>
+                    <input type="text" name="username" id="user">
+                    <button type="submit" id="submit-btn" onclick="usernameValue(event)">Submit</button>
                 </div>
+                </form>    
             </div>          
         </div>
         <!--Next question or restart event buttons-->
