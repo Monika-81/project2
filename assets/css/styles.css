@@ -118,7 +118,7 @@ img {
 }
 
 .answer-btn {
-    width: 8rem;
+    width: 9rem;
     height: 2rem;
     margin-top: 5%;
     margin: 2vh 5vw;
@@ -202,6 +202,10 @@ img {
 /* Media queries*/
 
 @media screen and (max-width: 1200px) {
+    body. {
+        background-image: url('../image/pexels-ylanite-koppens-697662\-small.jpg');
+    }
+
     h1 {
         font-size: 25px;
         padding: 0;
