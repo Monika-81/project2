@@ -7,6 +7,7 @@ let user = document.getElementById('user');
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
 let endDiv = document.getElementById('end-div');
+let highScoreDiv = document.getElementById('highscore');
 
 let nextBtn = document.getElementById('next-btn');
 let mediumNextBtn = document.getElementById('medium-next-btn');
@@ -207,76 +208,6 @@ function nextLvl() {
 }
 
 /**
- * Function for game over
- */
-function gameOver() {
-  btnDiv.style.display = 'none';
-  nextBtn.style.display = 'none';
-  endDiv.classList.remove('stack');
-  againBtn.classList.remove('stack');
-}
-
-function usernameValue(event) {
-  console.log(user.value);
-  console.log(currentScore);
-  highScore();
-}
-
-/**
- * Function to restart game at game over
- */
- function restartGame () {
-  btnDiv.style.display = 'block';
-  nextBtn.style.display = 'block';
-  endDiv.classList.add('stack');
-  againBtn.classList.add('stack');
-  resetAnswerBtns();
-  startGame();
-}
-
-//Fictive highscore array
-let highScoreArray = [
-  {
-    username: 'xxx',
-    highscore: '123'
-  },
-  {
-    username: 'xxy',
-    highscore: '122'
-  },
-  {
-    username: 'xxz',
-    highscore: '121'
-  },
-  {
-    username: 'xxq',
-    highscore: '120'
-  },
-  {
-    username: 'xxw',
-    highscore: '190'
-  }
-]
-
-/**
- * Function for calculating if the user made it to the highscore list. 
- * Puts the user on the list and sorts avfter highscore value.
- */
-function highScore() {
-  if (currentScore > highScoreArray[4].highscore) {
-    highScoreArray.pop();
-    let newHighscore = { username: user.value, highscore: currentScore};
-    highScoreArray.push(newHighscore);
-  }
-
-  highScoreArray.sort(function(a,b) {
-    return b.highscore - a.highscore;
-  });
-
-  console.log(highScoreArray);
-}
-
-/**
  * Function for starting medium level
  */
 mediumLvlBtn.addEventListener('click', nextMediumLevel);
@@ -406,3 +337,110 @@ hardNextBtn.addEventListener('click', function(event) {
     nextHardQuestion(); 
   }
 })
+
+
+/**
+ * Function for game over
+ */
+ function gameOver() {
+  btnDiv.style.display = 'none';
+  nextBtn.style.display = 'none';
+  endDiv.classList.remove('stack');
+  againBtn.classList.remove('stack');
+}
+
+function usernameValue(event) {
+  console.log(user.value);
+  console.log(currentScore);
+  highScore();
+}
+
+/**
+ * Function to restart game at game over
+ */
+ function restartGame () {
+  btnDiv.style.display = 'block';
+  nextBtn.style.display = 'block';
+  endDiv.classList.add('stack');
+  againBtn.classList.add('stack');
+  resetAnswerBtns();
+  startGame();
+}
+
+//Fictive highscore array, to get highscore list going
+let highScoreArray = [
+  {
+    username: 'Ted',
+    highscore: '123'
+  },
+  {
+    username: 'Robin',
+    highscore: '122'
+  },
+  {
+    username: 'Marshall',
+    highscore: '121'
+  },
+  {
+    username: 'Lily',
+    highscore: '120'
+  },
+  {
+    username: 'Barney',
+    highscore: '190'
+  }
+]
+
+/**
+ * Function for calculating if the user made it to the highscore list. 
+ * Puts the user on the list and sorts avfter highscore value.
+ */
+function highScore() {
+  if (currentScore > highScoreArray[4].highscore) {
+    highScoreArray.pop();
+    let newHighscore = { username: user.value, highscore: currentScore};
+    highScoreArray.push(newHighscore);
+  }
+
+  highScoreArray.sort(function(a,b) {
+    return b.highscore - a.highscore;
+  });
+
+  console.log(highScoreArray);
+  currentHighScore();
+}
+
+/**
+ * Dispaly highscore list at the end
+ * Credit LMS lesson: Writing Complex HTML With JavaScript
+ */
+function currentHighScore() {
+
+  let highScoreHtml = `
+    <table>
+      <thead>
+        <tr>
+          <th></i>Name</th>
+          <th></i>Highscore</th>
+        </tr>
+      </thead>
+    <tbody>
+  `;
+
+  for (highscore of highScoreArray) {
+    let rowHtml = `
+      <tr class="highscore-row">
+        <td>${highscore.username}</td>
+        <td>${highscore.highscore}</td>
+      </tr>
+    `;
+    highScoreHtml += rowHtml;  
+  }
+
+  highScoreHtml += `
+    </tbody>
+  </table>
+  `;
+
+  highScoreDiv.innerHTML = highScoreHtml; 
+}

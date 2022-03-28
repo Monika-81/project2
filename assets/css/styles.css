@@ -110,6 +110,30 @@ img {
     margin: 0 2vw;
 }
 
+/*---highscore list---*/
+.highscore {
+    width: fit-content;
+    text-align: left;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.7);
+    background-color: #eedcc5;
+}
+
+table, tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+td, th {
+    padding: 5px;
+}
+
+.highscore-row {
+    background: whitesmoke;
+}
+
 /*---Specific quiz area style---*/
 .answer-btns {
     width: 60%;
@@ -202,7 +226,7 @@ img {
 /* Media queries*/
 
 @media screen and (max-width: 1200px) {
-    body. {
+    body {
         background-image: url('../image/pexels-ylanite-koppens-697662\-small.jpg');
     }
 
@@ -231,8 +255,13 @@ img {
     }
 
     .answer-btn {
+        width: 7rem;
         margin-left: 2vw;
         margin-right: 2vw;
+    }
+
+    .highscore {
+        font-size: 13px;
     }
 }
 
