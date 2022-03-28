@@ -15,6 +15,7 @@ let hardNextBtn = document.getElementById('hard-next-btn');
 let mediumLvlBtn = document.getElementById('medium-level-btn');
 let hardLvlBtn = document.getElementById('hard-level-btn');
 let againBtn = document.getElementById('again-btn');
+let submitBtn = document.getElementById('submit-btn');
 
 //Declares const variables
 const score = document.getElementById('score');
@@ -347,12 +348,14 @@ hardNextBtn.addEventListener('click', function(event) {
   nextBtn.style.display = 'none';
   endDiv.classList.remove('stack');
   againBtn.classList.remove('stack');
+  submitBtn.disabled = false; 
 }
 
 function usernameValue(event) {
   if (user.value === "") {
     return false;
-  } 
+  }
+  submitBtn.disabled = true; 
   console.log(user.value);
   console.log(currentScore);
   highScore();
