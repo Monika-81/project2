@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", startGame);
 function startGame () { 
   console.log('New game started');
   availableQuestions = [...easyQuestions];
+  score.innerText = 0;
   reset();
   nextQuestion ();
 }
@@ -338,7 +339,6 @@ hardNextBtn.addEventListener('click', function(event) {
   }
 })
 
-
 /**
  * Function for game over
  */
@@ -350,6 +350,9 @@ hardNextBtn.addEventListener('click', function(event) {
 }
 
 function usernameValue(event) {
+  if (user.value === "") {
+    return false;
+  } 
   console.log(user.value);
   console.log(currentScore);
   highScore();
