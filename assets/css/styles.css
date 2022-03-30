@@ -9,7 +9,7 @@
   }
 
 body {
-    background-image: url('../image/pexels-ylanite-koppens-697662\-medium.jpg');
+    background-image: url('../image/pexels-ylanite-koppens-697662-medium.jpg');
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
@@ -257,13 +257,17 @@ td, th {
 
 /* Media queries*/
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
     body {
-        background-image: url('../image/pexels-ylanite-koppens-697662\-small.jpg');
+        background-image: url('../image/pexels-ylanite-koppens-697662-small.jpg');
     }
 }
 
 @media screen and (max-width: 550px) {
+    .game-area {
+        width: 90vw;
+    }
+
     h1 {
         font-size: 25px;
         padding: 0;
@@ -290,7 +294,7 @@ td, th {
     }
 
     .answer-btn {
-        width: 7rem;
+        width: 8rem;
         margin-left: 2vw;
         margin-right: 2vw;
     }
@@ -304,7 +308,20 @@ td, th {
     }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 350px) {
+    body {
+        background-image: unset;
+    }
+
+    .game-area {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        border-radius: unset;
+        box-shadow: unset;
+    }
+
     img {
         width: 200px;
         height: 150px;
@@ -319,9 +336,6 @@ td, th {
     }
 
     .answer-btn {
-        width: 5rem;
-        font-size: 13px;
-       
+        width: 7rem;
     }
-
-} 
+}

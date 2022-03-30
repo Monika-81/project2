@@ -109,7 +109,6 @@ function nextQuestion () {
  * Function for checking the users answer.
  * Turns chosen button red or green depending on answer. 
  */ 
-
 function checkAnswer(event) {
   let selectedChoice = event.target;
   let selectedAnswer = selectedChoice.dataset.type;
@@ -183,7 +182,6 @@ nextBtn.addEventListener('click', function(event) {
 /**
 * Function for reseting the answerbuttons after each question.
 */
-
 function resetAnswerBtns() {  
   aBtn.classList.remove('disable');
   aBtn.style.backgroundColor ="white";
@@ -224,7 +222,6 @@ function nextMediumLevel () {
  * Shuffels next medium question and reseting counting elements and buttons.
  * Credit for calculationg the questions: 'Learn {to} Code' at Youtube, see README.md 
  */ 
-
 function nextMediumQuestion () {
   currentQuestionIndex ++;
 
@@ -267,7 +264,6 @@ mediumNextBtn.addEventListener('click', function(event) {
  * /**
  * Function that takes the user to the hard level if a score >= 1500p.
  */
-
 function nextNextLvl() {
   if (currentScore >= 1500) {
     btnDiv.classList.add('stack');
@@ -294,7 +290,6 @@ function nextHardLevel () {
  * Shuffels next hard question and reseting counting elements and buttons.
  * Credit for calculationg the questions: 'Learn {to} Code' at Youtube, see README.md 
  */ 
-
 function nextHardQuestion () {
   currentQuestionIndex ++;
 
@@ -463,7 +458,6 @@ highScoreList.innerHTML = highScoreHtml;
  * Function to close highscore modal.
  * The modal is opend in function 'usernameValue'.
  */
-
 var highScoreModal = document.getElementById("highscore-modal");
 var span = document.getElementsByClassName("close")[0];
 

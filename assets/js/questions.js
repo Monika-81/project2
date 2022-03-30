@@ -247,7 +247,7 @@ const easyQuestions = [
       d: "South Korea",
       answer: 'd',
     }
-  ] 
+  ]; 
   
 //Medium level questions, 30 in total.
   const mediumQuestions = [
@@ -491,7 +491,7 @@ const easyQuestions = [
       d: "Czechia",
       answer: 'd',
     }
-  ]
+  ];
 
 //Hard level questions, 30 in total.  
 const hardQuestions = [
@@ -735,4 +735,4 @@ const hardQuestions = [
       d: "Trinidad and Tobago",
       answer: 'd',
     }
-  ]
+  ];
