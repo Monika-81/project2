@@ -7,8 +7,9 @@ let user = document.getElementById('user');
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
 let endDiv = document.getElementById('end-div');
-let highScoreDiv = document.getElementById('highscore');
+let highScoreList = document.getElementById('highscore');
 
+let startBtn = document.getElementById('start');
 let nextBtn = document.getElementById('next-btn');
 let mediumNextBtn = document.getElementById('medium-next-btn');
 let hardNextBtn = document.getElementById('hard-next-btn');
@@ -28,10 +29,10 @@ const dBtn = document.getElementById('d');
 
 //Global event listners
 againBtn.addEventListener('click', restartGame);
-aBtn.addEventListener("click", checkAnswer);
-bBtn.addEventListener("click", checkAnswer);
-cBtn.addEventListener("click", checkAnswer);
-dBtn.addEventListener("click", checkAnswer);
+aBtn.addEventListener('click', checkAnswer);
+bBtn.addEventListener('click', checkAnswer);
+cBtn.addEventListener('click', checkAnswer);
+dBtn.addEventListener('click', checkAnswer);
 
 /**
  * Game start after page content is loaded
@@ -42,6 +43,7 @@ function startGame () {
   console.log('New game started');
   availableQuestions = [...easyQuestions];
   score.innerText = 0;
+  currentScore = null;
   reset();
   nextQuestion ();
 }
@@ -168,13 +170,11 @@ score.innerText = (currentScore += 100);
 nextBtn.addEventListener('click', function(event) {
 
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
-    console.log(currentScore);
     clearInterval(time);
     nextLvl();
   } else { 
     resetAnswerBtns();
     nextBtn.disabled = true;
-    console.log(currentQuestionIndex);
     qCounter.innerText = (currentQuestionIndex + 1);
     nextQuestion(); 
   }
@@ -215,7 +215,6 @@ function nextLvl() {
 mediumLvlBtn.addEventListener('click', nextMediumLevel);
 
 function nextMediumLevel () {
-  console.log('starting medium level');
   availableQuestions = [...mediumQuestions];
   reset();
   nextMediumQuestion ();
@@ -255,12 +254,10 @@ function nextMediumQuestion () {
 mediumNextBtn.addEventListener('click', function(event) {
 
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
-    console.log(currentScore);
     clearInterval(time);
     nextNextLvl();
   } else { 
     resetAnswerBtns();
-    console.log(currentQuestionIndex);
     qCounter.innerText = (currentQuestionIndex + 1);
     nextMediumQuestion(); 
   }
@@ -288,7 +285,6 @@ function nextNextLvl() {
 hardLvlBtn.addEventListener('click', nextHardLevel);
 
 function nextHardLevel () {
-  console.log('starting hard level');
   availableQuestions = [...hardQuestions];
   reset();
   nextHardQuestion ();
@@ -320,7 +316,6 @@ function nextHardQuestion () {
   dBtn.innerHTML = randomQuestion.d;  
 
   availableQuestions.splice(hardQuestionIndex, 1);
-  console.log('ok here')
 }
 
 /**
@@ -329,12 +324,10 @@ function nextHardQuestion () {
 hardNextBtn.addEventListener('click', function(event) {
 
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
-    console.log(currentScore);
     clearInterval(time);
     gameOver();
   } else { 
     resetAnswerBtns();
-    console.log(currentQuestionIndex);
     qCounter.innerText = (currentQuestionIndex + 1);
     nextHardQuestion(); 
   }
@@ -356,9 +349,10 @@ function usernameValue(event) {
     return false;
   }
   submitBtn.disabled = true; 
-  console.log(user.value);
-  console.log(currentScore);
+
   highScore();
+  highScoreModal.style.display = "block";
+
 }
 
 /**
@@ -374,47 +368,64 @@ function usernameValue(event) {
 }
 
 //Fictive highscore array, to get highscore list going
-let highScoreArray = [
-  {
-    username: 'Ted',
-    highscore: '123'
-  },
-  {
-    username: 'Robin',
-    highscore: '122'
-  },
-  {
-    username: 'Marshall',
-    highscore: '121'
-  },
-  {
-    username: 'Lily',
-    highscore: '120'
-  },
-  {
-    username: 'Barney',
-    highscore: '190'
-  }
-]
+let highScoreArray;
+let loadLocalHighScore = JSON.parse(localStorage.getItem('storedHighScore')) || null;
+console.log(loadLocalHighScore);
+
+
+
 
 /**
  * Function for calculating if the user made it to the highscore list. 
- * Puts the user on the list and sorts avfter highscore value.
+ * Puts the user on the list and sorts after highscore value.
  */
 function highScore() {
+  if (loadLocalHighScore === null) {
+    highScoreArray = [
+    {
+    username: 'Ted',
+    highscore: '2500'
+    },
+    {
+    username: 'Robin',
+    highscore: '2000'
+    },
+    {
+    username: 'Marshall',
+    highscore: '1800'
+    },
+    {
+    username: 'Lily',
+    highscore: '1600'
+    },
+    {
+    username: 'Barney',
+    highscore: '1200'
+    }
+  ]
+  } else { 
+    highScoreArray = loadLocalHighScore;
+  }
+  
+  console.log(highScoreArray);
+  
+
   if (currentScore > highScoreArray[4].highscore) {
     highScoreArray.pop();
     let newHighscore = { username: user.value, highscore: currentScore};
     highScoreArray.push(newHighscore);
-  }
+  
 
   highScoreArray.sort(function(a,b) {
     return b.highscore - a.highscore;
   });
-
-  console.log(highScoreArray);
-  currentHighScore();
 }
+
+  console.log("hello");
+  currentHighScore();
+  window.localStorage.setItem('storedHighScore', JSON.stringify(highScoreArray));
+}
+
 
 /**
  * Dispaly highscore list at the end
@@ -425,7 +436,7 @@ function currentHighScore() {
   let highScoreHtml = `
     <table>
       <thead>
-        <tr>
+        <tr class="highscore-heading">
           <th></i>Name</th>
           <th></i>Highscore</th>
         </tr>
@@ -448,5 +459,23 @@ function currentHighScore() {
   </table>
   `;
 
-  highScoreDiv.innerHTML = highScoreHtml; 
+highScoreList.innerHTML = highScoreHtml; 
+}
+
+/**
+ * Function to close highscore modal.
+ * The modal is opend in function 'usernameValue'.
+ */
+
+var highScoreModal = document.getElementById("highscore-modal");
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  highScoreModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == highScoreModal) {
+    highScoreModal.style.display = "none";
+  }
 }

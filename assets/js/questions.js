@@ -1,7 +1,7 @@
 /**
  * Quiz questions
  * Each level has 30 questions with one flag and four possible answers.
- * Flag source: https://flagpedia.net/download/api
+ * Flag source credit: https://flagpedia.net/
  */
 
 //Easy level questions, 30 in total.
@@ -249,7 +249,7 @@ const easyQuestions = [
     }
   ] 
   
-  //Medium level questions, 30 in total.
+//Medium level questions, 30 in total.
   const mediumQuestions = [
     {
       question: ` <picture><img type="image/png" src="./assets/image/quiz/eg.png" alt="Egypt"></picture> `,
@@ -493,6 +493,7 @@ const easyQuestions = [
     }
   ]
 
+//Hard level questions, 30 in total.  
 const hardQuestions = [
     {
       question: ` <picture><img type="image/png" src="./assets/image/quiz/bi.png" alt="Burundi"></picture> `,
