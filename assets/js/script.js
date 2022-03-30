@@ -9,7 +9,6 @@ let nextDiv = document.getElementById('next-div');
 let endDiv = document.getElementById('end-div');
 let highScoreList = document.getElementById('highscore');
 
-let startBtn = document.getElementById('start');
 let nextBtn = document.getElementById('next-btn');
 let mediumNextBtn = document.getElementById('medium-next-btn');
 let hardNextBtn = document.getElementById('hard-next-btn');
@@ -67,7 +66,8 @@ var count = 59;
 var time;
 
 function startCountdown() {
-  time = setInterval(countdownTimer, 1000)}
+  time = setInterval(countdownTimer, 1000);
+}
 
 function countdownTimer() {
   document.getElementById('timer').innerHTML = count;
@@ -178,7 +178,7 @@ nextBtn.addEventListener('click', function(event) {
     qCounter.innerText = (currentQuestionIndex + 1);
     nextQuestion(); 
   }
-})
+});
 
 /**
 * Function for reseting the answerbuttons after each question.
@@ -261,7 +261,7 @@ mediumNextBtn.addEventListener('click', function(event) {
     qCounter.innerText = (currentQuestionIndex + 1);
     nextMediumQuestion(); 
   }
-})
+});
 
 /**
  * /**
@@ -332,7 +332,7 @@ hardNextBtn.addEventListener('click', function(event) {
     qCounter.innerText = (currentQuestionIndex + 1);
     nextHardQuestion(); 
   }
-})
+});
 
 /**
  * Function for game over
@@ -404,7 +404,7 @@ function highScore() {
     username: 'Barney',
     highscore: '1200'
     }
-  ]
+  ];
   } else { 
     highScoreArray = loadLocalHighScore;
   }
@@ -441,7 +441,7 @@ function currentHighScore() {
     <tbody>
   `;
 
-  for (highscore of highScoreArray) {
+  for (let highscore of highScoreArray) {
     let rowHtml = `
       <tr class="highscore-row">
         <td>${highscore.username}</td>
@@ -469,10 +469,10 @@ var span = document.getElementsByClassName("close")[0];
 
 span.onclick = function() {
   highScoreModal.style.display = "none";
-}
+};
 
 window.onclick = function(event) {
   if (event.target == highScoreModal) {
     highScoreModal.style.display = "none";
   }
-}
+};
