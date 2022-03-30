@@ -296,8 +296,8 @@ td, th {
     }
 
     .answer-btn {
-        width: 8rem;
-        margin-right: auto;
+        margin: auto;
+        margin: 5px;
     }
 
     td, th {
@@ -309,7 +309,7 @@ td, th {
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 370px) {
     body {
         background-image: unset;
     }
