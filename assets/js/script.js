@@ -40,7 +40,6 @@ dBtn.addEventListener('click', checkAnswer);
 document.addEventListener("DOMContentLoaded", startGame); 
 
 function startGame () { 
-  console.log('New game started');
   availableQuestions = [...easyQuestions];
   score.innerText = 0;
   currentScore = null;
@@ -74,7 +73,7 @@ function countdownTimer() {
   count--;
   if (count == -1) {
     clearInterval(time);
-    alert("Time out!! :(");
+    alert("Oh no, time out!! :(");
     gameOver();
   }
 }
@@ -352,7 +351,6 @@ function usernameValue(event) {
 
   highScore();
   highScoreModal.style.display = "block";
-
 }
 
 /**
@@ -367,17 +365,18 @@ function usernameValue(event) {
   startGame();
 }
 
-//Fictive highscore array, to get highscore list going
+/**
+ * Configuring highscore list, fictive array if the user haven't played before. 
+ * Gets previous highscore from local storage.
+ */
 let highScoreArray;
 let loadLocalHighScore = JSON.parse(localStorage.getItem('storedHighScore')) || null;
-console.log(loadLocalHighScore);
-
-
-
 
 /**
- * Function for calculating if the user made it to the highscore list. 
+ * Function that shows the current highscorelist.
+ * Calculating if the user made it to the highscore list. 
  * Puts the user on the list and sorts after highscore value.
+ * Adds current highscore to local storage.
  */
 function highScore() {
   if (loadLocalHighScore === null) {
@@ -406,9 +405,6 @@ function highScore() {
   } else { 
     highScoreArray = loadLocalHighScore;
   }
-  
-  console.log(highScoreArray);
-  
 
   if (currentScore > highScoreArray[4].highscore) {
     highScoreArray.pop();
@@ -416,16 +412,14 @@ function highScore() {
     highScoreArray.push(newHighscore);
   
 
-  highScoreArray.sort(function(a,b) {
-    return b.highscore - a.highscore;
-  });
-}
+    highScoreArray.sort(function(a,b) {
+      return b.highscore - a.highscore;
+      });
+  }  
 
-  console.log("hello");
-  currentHighScore();
   window.localStorage.setItem('storedHighScore', JSON.stringify(highScoreArray));
+  currentHighScore();
 }
-
 
 /**
  * Dispaly highscore list at the end
