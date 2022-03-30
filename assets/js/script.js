@@ -44,8 +44,6 @@ function startGame () {
   score.innerText = 0;
   currentScore = null;
   nextBtn.disabled = true;
-  mediumNextBtn.disabled = true;
-  hardNextBtn.diabled = true;
   reset();
   nextQuestion ();
 }
@@ -105,7 +103,6 @@ function nextQuestion () {
   dBtn.innerHTML = randomQuestion.d;  
 
   availableQuestions.splice(questionIndex, 1);
- 
 }
 
 /** 
@@ -173,6 +170,7 @@ nextBtn.addEventListener('click', function(event) {
 
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
     clearInterval(time);
+    nextBtn.disabled = true; 
     nextLvl();
   } else { 
     resetAnswerBtns();
@@ -202,8 +200,8 @@ function resetAnswerBtns() {
  */
 function nextLvl() {
   if (currentScore >= 700) {
-    btnDiv.style.display = 'none';
-    nextBtn.style.display = 'none';
+    btnDiv.classList.add('stack');
+    nextBtn.classList.add('stack');
     nextDiv.classList.remove('stack');
     mediumLvlBtn.classList.remove('stack');
   } else {
@@ -230,7 +228,7 @@ function nextMediumLevel () {
 function nextMediumQuestion () {
   currentQuestionIndex ++;
 
-  btnDiv.style.display = 'block';
+  btnDiv.classList.remove('stack');
   mediumNextBtn.classList.remove('stack');
   nextDiv.classList.add('stack');
   mediumLvlBtn.classList.add('stack');
@@ -272,8 +270,8 @@ mediumNextBtn.addEventListener('click', function(event) {
 
 function nextNextLvl() {
   if (currentScore >= 1500) {
-    btnDiv.style.display = 'none';
-    nextBtn.style.display = 'none';
+    btnDiv.classList.add('stack');
+    mediumNextBtn.classList.add('stack');
     nextDiv.classList.remove('stack');
     hardLvlBtn.classList.remove('stack');
   } else {
@@ -300,7 +298,7 @@ function nextHardLevel () {
 function nextHardQuestion () {
   currentQuestionIndex ++;
 
-  btnDiv.style.display = 'block';
+  btnDiv.classList.remove('stack');
   hardNextBtn.classList.remove('stack');
   nextDiv.classList.add('stack');
   hardLvlBtn.classList.add('stack');
@@ -327,6 +325,7 @@ hardNextBtn.addEventListener('click', function(event) {
 
   if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
     clearInterval(time);
+    hardLvlBtn.classList.add('stack'); 
     gameOver();
   } else { 
     resetAnswerBtns();
@@ -339,8 +338,10 @@ hardNextBtn.addEventListener('click', function(event) {
  * Function for game over
  */
  function gameOver() {
-  btnDiv.style.display = 'none';
-  nextBtn.style.display = 'none';
+  btnDiv.classList.add('stack');
+  nextBtn.classList.add('stack');
+  mediumNextBtn.classList.add('stack');
+  hardNextBtn.classList.add('stack');
   endDiv.classList.remove('stack');
   againBtn.classList.remove('stack');
   submitBtn.disabled = false; 
@@ -359,8 +360,8 @@ function usernameValue(event) {
  * Function to restart game at game over
  */
  function restartGame () {
-  btnDiv.style.display = 'block';
-  nextBtn.style.display = 'block';
+  btnDiv.classList.remove('stack');
+  nextBtn.classList.remove('stack');
   endDiv.classList.add('stack');
   againBtn.classList.add('stack');
   resetAnswerBtns();
