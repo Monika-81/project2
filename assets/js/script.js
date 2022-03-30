@@ -43,6 +43,9 @@ function startGame () {
   availableQuestions = [...easyQuestions];
   score.innerText = 0;
   currentScore = null;
+  nextBtn.disabled = true;
+  mediumNextBtn.disabled = true;
+  hardNextBtn.diabled = true;
   reset();
   nextQuestion ();
 }
@@ -102,7 +105,7 @@ function nextQuestion () {
   dBtn.innerHTML = randomQuestion.d;  
 
   availableQuestions.splice(questionIndex, 1);
-  nextBtn.disabled = true;
+ 
 }
 
 /** 
@@ -348,7 +351,6 @@ function usernameValue(event) {
     return false;
   }
   submitBtn.disabled = true; 
-
   highScore();
   highScoreModal.style.display = "block";
 }
