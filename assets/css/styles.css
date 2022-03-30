@@ -264,10 +264,6 @@ td, th {
 }
 
 @media screen and (max-width: 550px) {
-    .game-area {
-        width: 90vw;
-    }
-
     h1 {
         font-size: 25px;
         padding: 0;
@@ -284,19 +280,24 @@ td, th {
         letter-spacing: unset; 
     }
 
+    .game-introduction, #next-div, #end-div {
+        width: 80vw;
+    }
+
     .game-area {
+        width: 90vw;
         padding: 10px;
     }
 
     img {
+        max-width: unset;
         width: 250px;
-        height: 180px;
+        height: 150px;
     }
 
     .answer-btn {
         width: 8rem;
-        margin-left: 2vw;
-        margin-right: 2vw;
+        margin-right: auto;
     }
 
     td, th {
@@ -320,11 +321,6 @@ td, th {
         margin: 0;
         border-radius: unset;
         box-shadow: unset;
-    }
-
-    img {
-        width: 200px;
-        height: 150px;
     }
 
     h1 {
