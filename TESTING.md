@@ -64,10 +64,7 @@ When the basic structure of the project was done I ran code validation through W
 
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
-I also ran the page through Lighthouse for both desktop and mobile to test out the performance and accessibility of the page. The input gave me further information how to proceed with the project, and was repeated after all major changes and bug fixes. 
-<br>
-
-Both platforms where used for validation and accessibility testing at the final stage of the project. The final result is shown below: 
+I also ran the page through Lighthouse for both desktop and mobile to test out the performance and accessibility of the page. The input gave me further information how to proceed with the project; for exampel to minimize image files and minify javascript. I didn't do it as extensive as lighthouse suggested though since I was not sure how the WEBP file would work instead of the PNG file. Instead I compressed the PNG files (see **Content** section on previous page). I tried the minimizing tool for javascript that Lighthouse suggested but didn't accept the much compressed script it suggested. Instead I minimazed the white spaces in the question.js file as much as I could while still leaving the script readable. The process with Lighthouse was repeated after all major changes and bug fixes. The final result is shown below:
 <br>
 <br>
 
@@ -90,15 +87,16 @@ CSS
 
 **Lighthouse** 
 
-![Lighthouse Desktop](assets/images/readme/lighthouse-final-desktop.png)
+<img src="assets/image/readme/desktop-start-final.png" width=650> <img src="assets/image/readme/desktop-quiz-final.png" width=650> <img src="assets/image/readme/seo-desktop-quiz-final.png" width=650> 
 <br>
-(Desktop, the same result on all pages.)
+Desktop: Start page, quiz page and SEO comment for quiz page. <br>
+(The best practice had input about the image size not being scaled down correctly, an issue mot changed since the diffrent flag files have diffrent sizes and I ewanted the same size on all the flags displayed in the quiz.)
 <br>
 <br>
 
-![Lighthouse Mobile](assets/images/readme/lighthouse-mobile-finished.png)
+<img src="assets/image/readme/mobile-start-final-validation.png" width=650> 
 <br>
-(The mobile performance of 95% occurred on the activities page due to the image loaded, while running the same test on the other pages of the site the rating was 99%.)
+(The mobile performance  was sometimes lower but lighthouse then calculated on the larger image that isn't in use on mobile or tablet viewports due to media queries. The inspect element section of DevTools shows the correct smaller size being used but the lighthouse test runs the medium size picture anyway. BEst practice score is lower of the same reason as for the desktop: wrong image ratio.)
 <br>
 <br>
 
