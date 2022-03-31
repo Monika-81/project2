@@ -337,7 +337,7 @@ A copy of this GitHub Repository can be made by either making a copy on your loc
 
 I **consulted** following sites for help with code design:
 - To learn bore about flexbox I found information att [CSS-tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) and used part of what I learned in the css-code.
-- For learning more about stacking my divs with the help of this code from the user [Mario Petrovic](https://stackoverflow.com/users/3955557/mario-petrovic) on [Stack Overflow](https://stackoverflow.com/questions/1909648/stacking-divs-on-top-of-each-other):
+- For stacking my divs with the help of this code from the user [Mario Petrovic](https://stackoverflow.com/users/3955557/mario-petrovic) on [Stack Overflow](https://stackoverflow.com/questions/1909648/stacking-divs-on-top-of-each-other):
 
 
 ```
@@ -359,8 +359,8 @@ I **consulted** following sites for help with code design:
   grid-area: inner-div;
 }
 ```
-- I learnt more about local storage by reading on this page at [Stack Overflow](https://stackoverflow.com/questions/43762363/how-to-store-an-array-of-objects-in-local-storage) as well as reading on previous treads on the Code Institutes Slack community. No single passage of code was borrow, but built by trail and error.
-- I learnt how to shuffle and calculate a new question by looking at this video by [Learn {to} Code](https://www.youtube.com/watch?v=icb9AUBeznQ) on Youtube. Part of the code was borrow from his video and adjusted to suit my project.
+- I learnt more about local storage by reading on this page at [Stack Overflow](https://stackoverflow.com/questions/43762363/how-to-store-an-array-of-objects-in-local-storage) as well as reading on previous treads on the Code Institutes Slack community. No single passage of code was borrowed, but inspired and developed by trial and error.
+- I learnt how to shuffle and calculate a new question by looking at this video by [Learn {to} Code](https://www.youtube.com/watch?v=icb9AUBeznQ) on Youtube. Part of the code was borrowed from his video and adjusted to suit my project.
 - The modal code was largly borrowed and inspired from this site on [W3School](https://www.w3schools.com/howto/howto_css_modals.asp).
 - To create the button effects I used code from [Copy & Paste CSS](https://copy-paste-css.com/):
 ```
