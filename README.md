@@ -392,7 +392,7 @@ I **consulted** following sites for help with code design:
 - The Slack community for be such an open, warm and sharing place. 
 - My friend and senior developer **Alfred Skedebäck** for being a good listener and motivator when I encountered hardship and unscarted territory. Giving small tips anf pointing me in what direction I should seek the information I needed. Giving hints about what to think about for the future as I become a developer myself. 
 - **Viet Hoang** for letting me run the page by him and for getting user experience input before, during and at the final stage of the project.
-- My friends that tested the game on diffrent devices, with diffrent skill sets that provided me with good user input.
+- My friends that tested the game on diffrent devices, and diffrent level of flag knowledge that provided me with good user input.
 
 
 
