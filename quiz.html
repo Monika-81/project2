@@ -15,7 +15,7 @@
 <body>
     <!--Game area.-->
     <div class="game-area">
-        <h1 class="heading"><a href="index.html">Flag-along!</a></h1>
+        <h1 class="heading"><a href="index.html" aria-label="Go back to start page">Flag-along!</a></h1>
         <!--Score area-->
         <div class="score">
             <p>Your Score: <span id="score">0</span>p</p>
@@ -37,45 +37,45 @@
         <div class="container">
             <div class="div-stack" id="btn-div">
                 <div class="btn-a-b">
-                    <button class="answer-btn" data-type="a" id="a"></button>
-                    <button class="answer-btn" data-type="b" id="b"></button>
+                    <button class="answer-btn" data-type="a" id="a" aria-label="Answer A"></button>
+                    <button class="answer-btn" data-type="b" id="b" aria-label="Answer B"></button>
                 </div>
                 <div class="btn-c-d">
-                    <button class="answer-btn" data-type="c" id="c"></button>
-                    <button class="answer-btn" data-type="d" id="d"></button>
+                    <button class="answer-btn" data-type="c" id="c" aria-label="Answer C"></button>
+                    <button class="answer-btn" data-type="d" id="d" aria-label="Answer D"></button>
                 </div>
             </div>
             <div class="div-stack stack" id="next-div">
                 <h2>Next level!</h2>
                 <p>Conratulations on completing this level! Now let's move on to the next level. Good luck!</p>
-                <p>(Do you rather like to start over? Click <a href="index.html"><strong>here</strong></a>.)</p>            
+                <p>(Do you rather like to start over? Click <a href="index.html" aria-label="Click to restart the quiz"><strong>here</strong></a>.)</p>            
             </div>
             <div class="div-stack stack" id="end-div">
                 <h2>GAME OVER!</h2> 
-                <p>Oh no! The game is over... <i class="fa-solid fa-face-sad-tear"></i> Did you make it onto the highscore list?</p>
+                <p>Oh no! The game is over... <i class="fa-solid fa-face-sad-tear" aria-hidden="true"></i> Did you make it onto the highscore list?</p>
                 <p>Please pick a username below and submit your score!</p> 
                 <div class="username">
                     <label for="user" id="label" >Username:</label>
                     <input type="text" name="username" id="user">
-                    <button type="submit" id="submit-btn" onclick="usernameValue(event)">Submit</button>
+                    <button type="submit" id="submit-btn" onclick="usernameValue(event)" ia-label="Submit username">Submit</button>
                 </div>   
             </div>
             <!--Highscore table-->
             <div class="modal" id="highscore-modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close" aria-label="Click to close highscore modal">&times;</span>
                     <span id="highscore"></span>
                 </div>
             </div>            
         </div>
         <!--Next question or restart event buttons-->
         <div class="event-btn">
-            <button class="btn-stack" id="next-btn">Next question!</button>
-            <button class="btn-stack stack" id="medium-next-btn">Next question!</button>
-            <button class="btn-stack stack" id="hard-next-btn">Next question!</button>
-            <button class="btn-stack stack" id="medium-level-btn">Go to medium level!</button>
-            <button class="btn-stack stack" id="hard-level-btn">Go to hard level!</button>
-            <button class="btn-stack stack" id="again-btn">Play again!</button>
+            <button class="btn-stack" id="next-btn" aria-label="Click for next question">Next question!</button>
+            <button class="btn-stack stack" id="medium-next-btn" aria-label="Click for next question">Next question!</button>
+            <button class="btn-stack stack" id="hard-next-btn" aria-label="Click for next question">Next question!</button>
+            <button class="btn-stack stack" id="medium-level-btn" aria-label="Click for next level">Go to medium level!</button>
+            <button class="btn-stack stack" id="hard-level-btn" aria-label="Click for next level">Go to hard level!</button>
+            <button class="btn-stack stack" id="again-btn" aria-label="Click to restart the quiz">Play again!</button>
         </div>
     </div>
     <script src="assets/js/script.js"></script>
