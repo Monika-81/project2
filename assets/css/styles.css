@@ -10,6 +10,7 @@
 
 body {
     background-image: url('../image/pexels-ylanite-koppens-697662-medium.jpg');
+    background-color: #eedcc5;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
@@ -139,6 +140,7 @@ img {
     font-family: 'Poppins', sans-serif;
 }
 
+/*Code credit: Copy & paste CSS, see README.md*/
 .answer-btn:hover{
     box-shadow: inset 0px 3px 7px #d6d6e7;
     transform: translateY(2px);
