@@ -9,6 +9,7 @@
     - W3Schools
         - HTML
         - CSS
+        - JS Hint
     - Lighthouse
     - WAVE
 3. [Bugs and fixes](#bugs-and-fixes)
@@ -56,6 +57,11 @@ When the basic structure of the project was done I ran code validation through W
 
 I also ran the page through Lighthouse for both desktop and mobile to test out the performance and accessibility of the page. The input gave me further information how to proceed with the project; for exampel to minimize image files and minify javascript. I didn't do it as extensive as lighthouse suggested though since I was not sure how the WEBP file would work instead of the PNG file. Instead I compressed the PNG files (see **Content** section on previous page). I tried the minimizing tool for javascript that Lighthouse suggested but didn't accept the much compressed script it suggested. Instead I minimazed the white spaces in the question.js file as much as I could while still leaving the script readable. The process with Lighthouse was repeated after all major changes and bug fixes. The final result is shown below:
 <br>
+
+- [JS Hint](https://jshint.com/)
+
+The same procedur as the code validation above went into the validation of the javascript code. With the help of JS Hint i validated my code. First output reported on missing semicolons but nothing else. The final result is shown below.
+<br>
 <br>
 
 **W3School**
@@ -89,6 +95,14 @@ Desktop: Start page, quiz page and SEO comment for quiz page (not adjusted since
 (The mobile performance was sometimes lower but lighthouse then calculated on the medium image that isn't in use on mobile or tablet viewports due to media queries. The inspect element section of DevTools shows the correct smaller size being used but the lighthouse test runs the medium size picture anyway. eEst practice score is lower of the same reason as for the desktop: wrong image ratio.)
 <br>
 <br>
+
+**JS Hint**
+
+<img src="assets/image/readme/JSHint.png" width=650> 
+
+<br>
+<br>
+
 
 - [WAVE](https://wave.webaim.org/)
 
