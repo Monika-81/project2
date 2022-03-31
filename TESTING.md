@@ -1,13 +1,3 @@
-<br>
-Testing<br>
-
-felsök med att kommentera ut script + console.log
-
-bug
-- start.eventlistener did not work. wrong attribute. Change from class to id to match script.
-- onclick in html - wanted script in js. found right anwser in js script with help of https://stackoverflow.com/questions/41410958/open-a-new-html-page-in-a-js-function-and-then-write-some-html-on-it
-- error messages when changing html file, missing elements error in js. had to spit js-files.
-
 # **Testing**
 
 1. [Manual testing](#manual-testing)
@@ -89,22 +79,22 @@ CSS
 
 <img src="assets/image/readme/desktop-start-final.png" width=650> <img src="assets/image/readme/desktop-quiz-final.png" width=650> <img src="assets/image/readme/seo-desktop-quiz-final.png" width=650> 
 <br>
-Desktop: Start page, quiz page and SEO comment for quiz page. <br>
+Desktop: Start page, quiz page and SEO comment for quiz page (not adjusted since the link is inside the site logo). <br>
 (The best practice had input about the image size not being scaled down correctly, an issue mot changed since the diffrent flag files have diffrent sizes and I ewanted the same size on all the flags displayed in the quiz.)
 <br>
 <br>
 
-<img src="assets/image/readme/mobile-start-final-validation.png" width=650> 
+<img src="assets/image/readme/mobile-start-final-validation.png" width=650> <img src="assets/image/readme/mobile-quiz-final.png" width=650> 
 <br>
-(The mobile performance  was sometimes lower but lighthouse then calculated on the larger image that isn't in use on mobile or tablet viewports due to media queries. The inspect element section of DevTools shows the correct smaller size being used but the lighthouse test runs the medium size picture anyway. BEst practice score is lower of the same reason as for the desktop: wrong image ratio.)
+(The mobile performance was sometimes lower but lighthouse then calculated on the medium image that isn't in use on mobile or tablet viewports due to media queries. The inspect element section of DevTools shows the correct smaller size being used but the lighthouse test runs the medium size picture anyway. eEst practice score is lower of the same reason as for the desktop: wrong image ratio.)
 <br>
 <br>
 
 - [WAVE](https://wave.webaim.org/)
 
-To validate the accessibility further I also tested the site at Wave - Web Accessibility Evaluation Tool. No errors where found and the four warnings are give to the paragraphs with justified text, but I decided to keep the justified text out of design choice.
+To validate the accessibility further I also tested the site at Wave - Web Accessibility Evaluation Tool. No errors where found.
 
-![WAVE](assets/images/readme/accessibility.png) ![Alerts](assets/images/readme/alerts.png)
+<img src="assets/image/readme/wave-start.png" width=650> <img src="assets/image/readme/wave-game.png" width=650> 
 <br>
 <br>
 
@@ -114,37 +104,34 @@ To validate the accessibility further I also tested the site at Wave - Web Acces
 
 
 ### **Bugs and fixes**
-There where a number of bugs and mishaps committed through the development as I tried to learn the best way to code the website. Due to the large hero images and split screen design, the media query adjustments required a lot of trial and errors remodeling before the result was okay on all the devices. 
+There where a number of bugs and mishaps committed through the development. Most of the trial and error was fixed with commenting out and console.loging at various places to find where the bug was. <br>
 
 **The major bugs where**: <br>
-1. The hero image didn't fit the intended content area on desktop, the background color was showing at the top and bottom of the image.
-    - Fixed by revisiting the LMS material.
-2. Image text didn't stay where it was intended while testing the site's responsiveness, especially when I turned the smaller screens for landscape position.
-    - Fixed with the help of the media queries.
-3. The sticky header and footer had text scrolling underneath or the text was not visible due to the said header and footer.
-    - Fixed by revisiting the LMS material and by trying out own ideas.
-4. The links in the header and footer was overshadowed by the neighboring links padding and didn't work on smaller screens.
-    - Revisited the box-model lessons for better understanding. Changed padding to margin to keep the links at a distant from each other.
-5. The hero image was too big on tablet screen size, covered the whole viewport window.
-    - Resized the image and adjusted additional style in the media queries.
-6. Lighthouse flagged the indiatimes.com link as bad SEO due to the initial text description around the link was none descriptive of the links purpose.
-    - Rewrote the description containing the link.
-7. Lighthouse also flagged the hero image for bad loading time which lowered the performance.
-    - The image was to large, so a smaller version was downloaded and used instead. 
-8. The image text was not contrasting enough against the hero image.
-    - An overlay was added.
-9. The text segment didn't scroll as wanted.
-    - Revisited the lesson about overflow and added the property where it was needed.
+1. Repeatedly the eventlistener did not work. 
+    - Fixed by changing from class name tergeting to id for more specific targeting.
+2. From the start I though I had to separate into three separate files for html and script. 
+    - During the development process I saw that it was unnecesseary and made the coding harder, so I changed back to fewer files.
+3. The username input filed lacked validation and blank results could be submited.
+    - Fixed in the function the submit-button starts: (user.value === "") {return false;}
+4. The user could also repeat the same submit of username multible times.
+    - Fixed by the same function: disabeling the button after a valid submit.
+5. The countdown-timer did not go back to zero when the user restarted the game. Kept counting score from the last score value in previous game.
+    - Fixed by adding: 'score.innerText = 0;' and 'currentScore = null;' to the start of each game.
+6. The stacked nextquestion buttons for the medium and hard level did not disapear after restarting game if the user reached those levels. Resulting in the hard next question button to turn to the game over screen after 10 questions even if the user just restarted at easy level.
+    - Noticed I didn't hide the buttons again at restart. Hade two diffrent types of code with the same purpose to hide elements 'style.display' and 'classlist.add/remove'. Adjusted code to be consequent and added 'mediumNextBtn.classList.add('stack');' and 'hardNextBtn.classList.add('stack');' to game over-function.
+7. Countdown timer didn't restart counting at the start of a new game after game over or if the user choose to play a level again. Was locked at the last value of seconds left after last game.
+    - Added restart timer function to the start of each game. (Code credit, see **Credits** on previos page.)
+8. The next button was showing for the first quesion at every restart, makeing it possble to skip the first qustion without answering.
+    - Added 'nextBtn.disabled = true;' at the start of each game.       
 
 <br>
 
-For most of the bug fixes I went back to the [Code Institute](https://codeinstitute.net/) LMS and the learning material for the HTML ans CSS module and found the answers there. I also turned to the Slack community and the search function, where I found many answers. In a few cases I consulted external sources while searching for the answer using [Google](www.google.com). For more information about the external code used, see the section on the previous page.
+For most of the bug fixes I went back to the [Code Institute](https://codeinstitute.net/) LMS and the learning material for the Javascript module and found the answers there. I also turned to the Slack community and the search function, where I found many answers. In addition to that I also consulted external sources while searching for the answer using [Google](www.google.com). For more information about the external code used, see the section on the previous page.
 
 <br>
 
 **Bug not fixed**:
-- The code I found on Stack Overflow to hide the scrollbar doesn't work in Internet Explorer and Firefox. There are other code examples on the same site but for this site I didn't want to include JavaScripts.
-<br>
+- None
 
 [Back to top](#testing)
 

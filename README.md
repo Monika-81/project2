@@ -253,9 +253,6 @@ If the user submit their name to the input field above they get to se the highsc
 - [DevTools](https://developer.chrome.com/docs/devtools/)
     -  I used DevTools to test both changes in my code and the responsivity of the site.  
 
-- [Favicon](https://favicon.io/emoji-favicons/)
-    - I got my favicon and information how to use it from Favicon.io.
-
 - [Font Awesome](https://fontawesome.com)
     - I used Font Awesome for find the icon used on the site.
 
@@ -373,6 +370,8 @@ I **consulted** following sites for help with code design:
 }
 ```
 - The highscore function was coded with help of the LMS form and array lessons as well as some help from this page at [W3School](https://www.w3schools.com/jsref/jsref_sort.asp).
+- Adding a timer function with the help of this pages: [Stack overflow](https://stackoverflow.com/questions/44314897/javascript-timer-for-a-quiz/44315106#44315106) - last two code comments partly used after adjustments.
+- With the help of this page I figured out how to restart the timer at the start of each game: [Tutorial Link](https://javascript.tutorialink.com/reset-timer-back-to-0-by-using-the-timer-setinterval-clearinterval-for-stopwatch/).
 
 <br>
 
