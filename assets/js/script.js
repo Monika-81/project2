@@ -355,12 +355,15 @@ submitBtn.addEventListener('click', function(event) {
   event.preventDefault();
   if (user.value === "" || key === 32) {
     alert('Please submit a username.');
+    key = 0
     return false;
-  }
+  } else {
   submitBtn.disabled = true; 
   highScore();
   highScoreModal.style.display = "block";
+  }
 });
+
 
 /**
  * Function to restart game at game over
