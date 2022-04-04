@@ -343,7 +343,7 @@ hardNextBtn.addEventListener('click', function(event) {
   submitBtn.disabled = false; 
 }
 
-//Eventlistner for use of spacebar in input field
+//Eventlistner for use of spacebar in input field (Code Credit: Code Grepper, see README.md)
 user.addEventListener('keypress', function(event) {
   if (event.code === 'Space') {
     key = 32;

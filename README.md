@@ -313,7 +313,7 @@ The live link can be found here: https://monika-81.github.io/project2/
 
 A copy of this GitHub Repository can be made by either making a copy on your local machine or by forking the GitHub content. By using a copy of the repository changes can be made to the copy without affecting the original code. To make a copy of the repository, follow these steps:
 
-**Copy**
+**Clone**
 - Locate the repository at **GitHub**.
 - At the top of the file's menu, click the green *code* button to the right.
 - The first option in the drop-down menu is clone, where you get three choices of how to clone the repository.
@@ -373,6 +373,14 @@ I **consulted** the following sites for help with the code development:
 - The highscore function was coded with help of the LMS form and array lessons, as well as some help from this page at [W3School](https://www.w3schools.com/jsref/jsref_sort.asp).
 - Adding a timer function with the help of this pages: [Stack overflow](https://stackoverflow.com/questions/44314897/javascript-timer-for-a-quiz/44315106#44315106) - last two code comments partly used after adjustments.
 - With the help of this page I figured out how to restart the timer at the start of each game: [Tutorial Link](https://javascript.tutorialink.com/reset-timer-back-to-0-by-using-the-timer-setinterval-clearinterval-for-stopwatch/).
+- To prevent spacebar input to username field, I found code that I partly used from this page at [Code Grepper](https://www.codegrepper.com/code-examples/javascript/js+get+input+from+space+bar):
+```
+document.addEventListener('keyup', event => {
+  if (event.code === 'Space') {
+    console.log('Space pressed'); //whatever you want to do when space is pressed
+  }
+})
+```
 
 <br>
 
