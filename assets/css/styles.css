@@ -311,7 +311,14 @@ td, th {
     }
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 380px) {
+    .answer-btn {
+        width: 8rem;
+    }
+}
+
+
+@media screen and (max-width: 300px) {
     body {
         background-image: unset;
     }
