@@ -3,6 +3,7 @@ let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
 let qCounter = document.getElementById('q-counter');
 let user = document.getElementById('user');
+var key;
 
 let btnDiv = document.getElementById('btn-div');
 let nextDiv = document.getElementById('next-div');
@@ -342,14 +343,24 @@ hardNextBtn.addEventListener('click', function(event) {
   submitBtn.disabled = false; 
 }
 
-function usernameValue(event) {
-  if (user.value === "") {
+//Eventlistner for use of spacebar in input field
+user.addEventListener('keypress', function(event) {
+  if (event.code === 'Space') {
+    key = 32;
+  }
+})
+
+//Eventlistner for validating and submitting username 
+submitBtn.addEventListener('click', function(event) {
+  event.preventDefault();
+  if (user.value === "" || key === 32) {
+    alert('Please submit a username.');
     return false;
   }
   submitBtn.disabled = true; 
   highScore();
   highScoreModal.style.display = "block";
-}
+});
 
 /**
  * Function to restart game at game over
