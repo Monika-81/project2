@@ -1,4 +1,3 @@
-//Declares let variables
 let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
 let qCounter = document.getElementById('q-counter');
@@ -18,7 +17,6 @@ let hardLvlBtn = document.getElementById('hard-level-btn');
 let againBtn = document.getElementById('again-btn');
 let submitBtn = document.getElementById('submit-btn');
 
-//Declares const variables
 const score = document.getElementById('score');
 const maxQuestions = 10;
 const flagElement = document.getElementById('flags');
@@ -27,7 +25,6 @@ const bBtn = document.getElementById('b');
 const cBtn = document.getElementById('c');
 const dBtn = document.getElementById('d');
 
-//Global event listners
 againBtn.addEventListener('click', restartGame);
 aBtn.addEventListener('click', checkAnswer);
 bBtn.addEventListener('click', checkAnswer);

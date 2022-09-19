@@ -7,33 +7,30 @@
     <meta name="description" content="Flag-along! | Test your knowledge of flags in this flag quiz!">
     <meta name="keywords" content="flag quiz, quiz, flags, flag, world flags, knowledge quiz">
     <meta name="author" content="Monika Jakobsson, CI student">
-    <!--Stylesheet link-->
+
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Flag-along!</title>
+    <title>Flag-along quiz!</title>
 </head>
 <body>
     <!--Game area.-->
-    <div class="game-area">
+    <main class="game-area">
         <h1 class="heading"><a href="index.html" aria-label="Go back to start page">Flag-along!</a></h1>
-        <!--Score area-->
-        <div class="score">
-            <p>Your Score: <span id="score">0</span>p</p>
-        </div>
-        <!--Flag question-->
-        <div class="flag" id="flags">
-            <picture></picture>
-        </div>
-        <div class="counting-elm">
-            <!--Current question number-->
-            <div class="question-counter flex">
-                <p>Question <span id="q-counter"></span> / 10</p></div>
-            <!--Count down timer-->
-            <div class="timer flex">
-                <p>Seconds left: <span id="timer"></span></p>
+        <!--Quiz area-->
+        <section>
+            <div class="score">
+                <p>Your Score: <span id="score">0</span>p</p>
             </div>
-        </div>
-        <!--Four buttons with suggested answers-->
-        <div class="container">
+            <div class="flag" id="flags"> <!--Quiz flag--></div>
+            <div class="counting-elm">
+                <div class="question-counter flex">
+                    <p>Question <span id="q-counter"></span> / 10</p></div>
+                <div class="timer flex">
+                    <p>Seconds left: <span id="timer"></span></p>
+                </div>
+            </div>
+        </section>
+        <!--Answer buttons-->
+        <section class="container">
             <div class="div-stack" id="btn-div">
                 <div class="btn-a-b">
                     <button class="answer-btn" data-type="a" id="a" aria-label="Answer A"></button>
@@ -66,20 +63,19 @@
                     <span id="highscore"></span>
                 </div>
             </div>            
-        </div>
+        </section>
         <!--Next question or restart event buttons-->
-        <div class="event-btn">
+        <section class="event-btn">
             <button class="btn-stack" id="next-btn" aria-label="Click for next question">Next question!</button>
             <button class="btn-stack stack" id="medium-next-btn" aria-label="Click for next question">Next question!</button>
             <button class="btn-stack stack" id="hard-next-btn" aria-label="Click for next question">Next question!</button>
             <button class="btn-stack stack" id="medium-level-btn" aria-label="Click for next level">Go to medium level!</button>
             <button class="btn-stack stack" id="hard-level-btn" aria-label="Click for next level">Go to hard level!</button>
             <button class="btn-stack stack" id="again-btn" aria-label="Click to restart the quiz">Play again!</button>
-        </div>
-    </div>
+        </section>
+    </main>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/questions.js"></script>
-    <!--font awesome script-->
     <script src="https://kit.fontawesome.com/0676e6e141.js" crossorigin="anonymous"></script> 
     </body>
 </html>

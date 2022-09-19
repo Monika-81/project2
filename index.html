@@ -7,19 +7,21 @@
     <meta name="description" content="Flag-along! | Test your knowledge of flags in this flag quiz!">
     <meta name="keywords" content="flag quiz, quiz, flags, flag, world flags, knowledge quiz">
     <meta name="author" content="Monika Jakobsson, CI student">
-    <!--Stylesheet link-->
+
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Flag-along!</title>
+    <title>Flag-along home!</title>
 </head>
 <body>
-    <div class="game-area">
-        <h1 class="heading"><a href="index.html" aria-label="Go back to start page">Flag-along!</a></h1>
-        <!--Image of welcome flag-->
-        <div class="flag">
-            <img src="assets/image/con.png" alt="Flag of commonwealth of Nations">
-        </div>
-        <!--Introdution of the game-->
-        <div class="game-introduction">
+    <main class="game-area">
+        <section>
+            <h1 class="heading"><a href="index.html" aria-label="Go back to start page">Flag-along!</a></h1>
+            <div class="flag">
+                <picture>
+                    <img src="assets/image/con.png" alt="Flag of commonwealth of Nations">
+                </picture>
+            </div>
+        </section>
+        <section class="game-introduction">
             <h2 class="welcome">Welcome to Flag-along!</h2>
             <p class="how-to">Can you guess the country of the flag?</p>
             <ul>
@@ -28,13 +30,11 @@
                 <li><i class="fa-solid fa-font-awesome" aria-hidden="true"></i>You need 700p to go to the MEDIUM level and at least 1500p to reach HARD level.</li>
                 <li><i class="fa-solid fa-font-awesome" aria-hidden="true"></i>Can you make it to the highscore list?</li>
             </ul>
-        </div>
-        <!--Start game button-->
-        <div class="event-btn">
+        </section>
+        <section class="event-btn">
             <button class="btn-stack" id="start" onclick="window.location.href='quiz.html';" aria-label="Click to start the quiz">Start the game!</button>
-        </div>
-    </div>
-    <!--font awesome script-->
+        </section>
+    </main>
     <script src="https://kit.fontawesome.com/0676e6e141.js" crossorigin="anonymous"></script> 
 </body>
 </html>
