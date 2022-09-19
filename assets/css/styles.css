@@ -77,7 +77,6 @@ p, li {
 }
 
 /*Style for game area*/
-
 .game-area {
     width: 80vw;
     max-width: 1300px;
@@ -168,8 +167,19 @@ img {
     font-family: 'Poppins', sans-serif;
 }
 
-/*Style for submit button*/
+#highscore-btn {
+    width: 6rem;
+    height: 2rem;
+    margin: 15px;
+    border-radius: 25px;
+    border-color: #d6d6e7;
+    cursor: pointer;
+    grid-area: inner-div;  
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
 
+/*Style for submit button*/
 #submit-btn {
     width: 5rem;
     border-radius: 25px;
@@ -258,7 +268,6 @@ td, th {
 }
 
 /* Media queries*/
-
 @media screen and (max-width: 1300px) {
     body {
         background-image: url('../image/pexels-ylanite-koppens-697662-small.jpg');

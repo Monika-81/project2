@@ -16,6 +16,7 @@ let mediumLvlBtn = document.getElementById('medium-level-btn');
 let hardLvlBtn = document.getElementById('hard-level-btn');
 let againBtn = document.getElementById('again-btn');
 let submitBtn = document.getElementById('submit-btn');
+let highscoreBtn = document.getElementById('highscore-btn');
 
 const score = document.getElementById('score');
 const maxQuestions = 10;
@@ -361,11 +362,10 @@ submitBtn.addEventListener('click', function(event) {
   }
 });
 
-
 /**
  * Function to restart game at game over
  */
- function restartGame () {
+function restartGame () {
   btnDiv.classList.remove('stack');
   nextBtn.classList.remove('stack');
   endDiv.classList.add('stack');
@@ -481,3 +481,9 @@ window.onclick = function(event) {
     highScoreModal.style.display = "none";
   }
 };
+
+//Eventlistner to show highscore
+highscoreBtn.addEventListener('click', function(event) {
+  highScore();
+  highScoreModal.style.display = "block";
+});
