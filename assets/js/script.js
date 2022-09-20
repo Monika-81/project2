@@ -2,35 +2,37 @@ let randomQuestion, currentQuestionIndex, availableQuestions;
 let currentScore = parseInt(document.getElementById("score").innerText);
 let qCounter = document.getElementById('q-counter');
 let user = document.getElementById('user');
-var key;
-
-let btnDiv = document.getElementById('btn-div');
-let nextDiv = document.getElementById('next-div');
-let endDiv = document.getElementById('end-div');
+let score = document.getElementById('score');
 let highScoreList = document.getElementById('highscore');
+let key;
 
-let nextBtn = document.getElementById('next-btn');
-let mediumNextBtn = document.getElementById('medium-next-btn');
-let hardNextBtn = document.getElementById('hard-next-btn');
-let mediumLvlBtn = document.getElementById('medium-level-btn');
-let hardLvlBtn = document.getElementById('hard-level-btn');
-let againBtn = document.getElementById('again-btn');
-let submitBtn = document.getElementById('submit-btn');
-let highscoreBtn = document.getElementById('highscore-btn');
+const btnDivEl = document.getElementById('btn-div');
+const nextDivEl = document.getElementById('next-div');
+const endDivEl = document.getElementById('end-div');
 
-const score = document.getElementById('score');
-const maxQuestions = 10;
+const mediumNextBtnEl = document.getElementById('medium-next-btn');
+const hardNextBtnEl = document.getElementById('hard-next-btn');
+const mediumLvlBtnEl = document.getElementById('medium-level-btn');
+const hardLvlBtnEl = document.getElementById('hard-level-btn');
+
+const nextBtnEl = document.getElementById('next-btn');
+const againBtnEl = document.getElementById('again-btn');
+const submitBtnEl = document.getElementById('submit-btn');
+const highScoreBtnEl = document.getElementById('highscore-btn');
+
+const aBtnEl = document.getElementById('a');
+const bBtnEl = document.getElementById('b');
+const cBtnEl = document.getElementById('c');
+const dBtnEl = document.getElementById('d');
+
+const MAX_QUESTIONS = 10;
 const flagElement = document.getElementById('flags');
-const aBtn = document.getElementById('a');
-const bBtn = document.getElementById('b');
-const cBtn = document.getElementById('c');
-const dBtn = document.getElementById('d');
 
-againBtn.addEventListener('click', restartGame);
-aBtn.addEventListener('click', checkAnswer);
-bBtn.addEventListener('click', checkAnswer);
-cBtn.addEventListener('click', checkAnswer);
-dBtn.addEventListener('click', checkAnswer);
+againBtnEl.addEventListener('click', restartGame);
+aBtnEl.addEventListener('click', checkAnswer);
+bBtnEl.addEventListener('click', checkAnswer);
+cBtnEl.addEventListener('click', checkAnswer);
+dBtnEl.addEventListener('click', checkAnswer);
 
 /**
  * Game start after page content is loaded
@@ -41,7 +43,7 @@ function startGame () {
   availableQuestions = [...easyQuestions];
   score.innerText = 0;
   currentScore = null;
-  nextBtn.disabled = true;
+  nextBtnEl.disabled = true;
   reset();
   nextQuestion ();
 }
@@ -61,8 +63,8 @@ function reset() {
 /**
  * Function for countdown timer
  */
-var count = 59;
-var time;
+let count = 59;
+let time;
 
 function startCountdown() {
   time = setInterval(countdownTimer, 1000);
@@ -96,10 +98,10 @@ function nextQuestion () {
   randomQuestion = availableQuestions[questionIndex];
   flagElement.innerHTML = randomQuestion.question;
 
-  aBtn.innerHTML = randomQuestion.a;
-  bBtn.innerHTML = randomQuestion.b;
-  cBtn.innerHTML = randomQuestion.c;
-  dBtn.innerHTML = randomQuestion.d;  
+  aBtnEl.innerHTML = randomQuestion.a;
+  bBtnEl.innerHTML = randomQuestion.b;
+  cBtnEl.innerHTML = randomQuestion.c;
+  dBtnEl.innerHTML = randomQuestion.d;  
 
   availableQuestions.splice(questionIndex, 1);
 }
@@ -115,17 +117,17 @@ function checkAnswer(event) {
   if (selectedAnswer === randomQuestion.answer) {
     selectedChoice.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
     disableAnswerBtns();
-    nextBtn.disabled = false;
-    mediumNextBtn.disabled = false;
-    hardNextBtn.disabled = false;
+    nextBtnEl.disabled = false;
+    mediumNextBtnEl.disabled = false;
+    hardNextBtnEl.disabled = false;
     calculateScore();
   } else {
     selectedChoice.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
-    rightAnswer();
+    showRightAnswer();
     disableAnswerBtns();
-    nextBtn.disabled = false;
-    mediumNextBtn.disabled = false;
-    hardNextBtn.disabled = false;
+    nextBtnEl.disabled = false;
+    mediumNextBtnEl.disabled = false;
+    hardNextBtnEl.disabled = false;
   }
 }
 
@@ -133,24 +135,24 @@ function checkAnswer(event) {
  * Functions for disableing answer buttons to prevent repeated guessing.
  */
 function disableAnswerBtns() {
-  aBtn.classList.add('disable');
-  bBtn.classList.add('disable');
-  cBtn.classList.add('disable');
-  dBtn.classList.add('disable');
+  aBtnEl.classList.add('disable');
+  bBtnEl.classList.add('disable');
+  cBtnEl.classList.add('disable');
+  dBtnEl.classList.add('disable');
 } 
 
 /**
  * Function for showing the correct answer if user guessed wrong answer.
  */
-function rightAnswer () {
-  if (aBtn.dataset.type == randomQuestion.answer) {
-    aBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
-  } else if (bBtn.dataset.type == randomQuestion.answer) {
-    bBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
-  } else if (cBtn.dataset.type == randomQuestion.answer) {
-    cBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
-  } else if (dBtn.dataset.type == randomQuestion.answer) {
-    dBtn.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+function showRightAnswer () {
+  if (aBtnEl.dataset.type == randomQuestion.answer) {
+    aBtnEl.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } else if (bBtnEl.dataset.type == randomQuestion.answer) {
+    bBtnEl.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } else if (cBtnEl.dataset.type == randomQuestion.answer) {
+    cBtnEl.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
+  } else if (dBtnEl.dataset.type == randomQuestion.answer) {
+    dBtnEl.style.backgroundColor = 'rgba(0, 128, 0, 0.7)';
   } 
 }
 
@@ -164,15 +166,15 @@ score.innerText = (currentScore += 100);
 /**
  * Function that either shows the next easy question or takes the user to the medium level.
  */
-nextBtn.addEventListener('click', function(event) {
+nextBtnEl.addEventListener('click', function(event) {
 
-  if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
+  if (availableQuestions.lenght === 0 || currentQuestionIndex >= MAX_QUESTIONS) {
     clearInterval(time);
-    nextBtn.disabled = true; 
-    nextLvl();
+    nextBtnEl.disabled = true; 
+    mediumLvl();
   } else { 
     resetAnswerBtns();
-    nextBtn.disabled = true;
+    nextBtnEl.disabled = true;
     qCounter.innerText = (currentQuestionIndex + 1);
     nextQuestion(); 
   }
@@ -182,25 +184,25 @@ nextBtn.addEventListener('click', function(event) {
 * Function for reseting the answerbuttons after each question.
 */
 function resetAnswerBtns() {  
-  aBtn.classList.remove('disable');
-  aBtn.style.backgroundColor ="white";
-  bBtn.classList.remove('disable');
-  bBtn.style.backgroundColor ="white";
-  cBtn.classList.remove('disable');
-  cBtn.style.backgroundColor ="white";
-  dBtn.classList.remove('disable');
-  dBtn.style.backgroundColor ="white";
+  aBtnEl.classList.remove('disable');
+  aBtnEl.style.backgroundColor ="white";
+  bBtnEl.classList.remove('disable');
+  bBtnEl.style.backgroundColor ="white";
+  cBtnEl.classList.remove('disable');
+  cBtnEl.style.backgroundColor ="white";
+  dBtnEl.classList.remove('disable');
+  dBtnEl.style.backgroundColor ="white";
 }  
 
 /**
  * Function that takes the user to the medium level if a score >= 700p.
  */
-function nextLvl() {
+function mediumLvl() {
   if (currentScore >= 700) {
-    btnDiv.classList.add('stack');
-    nextBtn.classList.add('stack');
-    nextDiv.classList.remove('stack');
-    mediumLvlBtn.classList.remove('stack');
+    btnDivEl.classList.add('stack');
+    nextBtnEl.classList.add('stack');
+    nextDivEl.classList.remove('stack');
+    mediumLvlBtnEl.classList.remove('stack');
   } else {
     gameOver();
   }
@@ -209,9 +211,9 @@ function nextLvl() {
 /**
  * Function for starting medium level
  */
-mediumLvlBtn.addEventListener('click', nextMediumLevel);
+mediumLvlBtnEl.addEventListener('click', startMediumLevel);
 
-function nextMediumLevel () {
+function startMediumLevel () {
   availableQuestions = [...mediumQuestions];
   reset();
   nextMediumQuestion ();
@@ -224,11 +226,11 @@ function nextMediumLevel () {
 function nextMediumQuestion () {
   currentQuestionIndex ++;
 
-  btnDiv.classList.remove('stack');
-  mediumNextBtn.classList.remove('stack');
-  nextDiv.classList.add('stack');
-  mediumLvlBtn.classList.add('stack');
-  mediumNextBtn.disabled = true;
+  btnDivEl.classList.remove('stack');
+  mediumNextBtnEl.classList.remove('stack');
+  nextDivEl.classList.add('stack');
+  mediumLvlBtnEl.classList.add('stack');
+  mediumNextBtnEl.disabled = true;
 
   resetAnswerBtns();
 
@@ -236,10 +238,10 @@ function nextMediumQuestion () {
   randomQuestion = availableQuestions[mediumQuestionIndex];
   flagElement.innerHTML = randomQuestion.question;
 
-  aBtn.innerHTML = randomQuestion.a;
-  bBtn.innerHTML = randomQuestion.b;
-  cBtn.innerHTML = randomQuestion.c;
-  dBtn.innerHTML = randomQuestion.d;  
+  aBtnEl.innerHTML = randomQuestion.a;
+  bBtnEl.innerHTML = randomQuestion.b;
+  cBtnEl.innerHTML = randomQuestion.c;
+  dBtnEl.innerHTML = randomQuestion.d;  
 
   availableQuestions.splice(mediumQuestionIndex, 1);
 }
@@ -247,11 +249,11 @@ function nextMediumQuestion () {
 /**
  * Function that either shows the next medium question or takes the user to the hard level.
  */
-mediumNextBtn.addEventListener('click', function(event) {
+mediumNextBtnEl.addEventListener('click', function(event) {
 
-  if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
+  if (availableQuestions.lenght === 0 || currentQuestionIndex >= MAX_QUESTIONS) {
     clearInterval(time);
-    nextNextLvl();
+    hardLvl();
   } else { 
     resetAnswerBtns();
     qCounter.innerText = (currentQuestionIndex + 1);
@@ -263,12 +265,12 @@ mediumNextBtn.addEventListener('click', function(event) {
  * /**
  * Function that takes the user to the hard level if a score >= 1500p.
  */
-function nextNextLvl() {
+function hardLvl() {
   if (currentScore >= 1500) {
-    btnDiv.classList.add('stack');
-    mediumNextBtn.classList.add('stack');
-    nextDiv.classList.remove('stack');
-    hardLvlBtn.classList.remove('stack');
+    btnDivEl.classList.add('stack');
+    mediumNextBtnEl.classList.add('stack');
+    nextDivEl.classList.remove('stack');
+    hardLvlBtnEl.classList.remove('stack');
   } else {
     gameOver();
   }
@@ -277,9 +279,9 @@ function nextNextLvl() {
 /**
  * Function for starting hard level
  */
-hardLvlBtn.addEventListener('click', nextHardLevel);
+hardLvlBtnEl.addEventListener('click', startHardLevel);
 
-function nextHardLevel () {
+function startHardLevel () {
   availableQuestions = [...hardQuestions];
   reset();
   nextHardQuestion ();
@@ -292,11 +294,11 @@ function nextHardLevel () {
 function nextHardQuestion () {
   currentQuestionIndex ++;
 
-  btnDiv.classList.remove('stack');
-  hardNextBtn.classList.remove('stack');
-  nextDiv.classList.add('stack');
-  hardLvlBtn.classList.add('stack');
-  hardNextBtn.disabled = true;
+  btnDivEl.classList.remove('stack');
+  hardNextBtnEl.classList.remove('stack');
+  nextDivEl.classList.add('stack');
+  hardLvlBtnEl.classList.add('stack');
+  hardNextBtnEl.disabled = true;
 
   resetAnswerBtns();
 
@@ -304,10 +306,10 @@ function nextHardQuestion () {
   randomQuestion = availableQuestions[hardQuestionIndex];
   flagElement.innerHTML = randomQuestion.question;
 
-  aBtn.innerHTML = randomQuestion.a;
-  bBtn.innerHTML = randomQuestion.b;
-  cBtn.innerHTML = randomQuestion.c;
-  dBtn.innerHTML = randomQuestion.d;  
+  aBtnEl.innerHTML = randomQuestion.a;
+  bBtnEl.innerHTML = randomQuestion.b;
+  cBtnEl.innerHTML = randomQuestion.c;
+  dBtnEl.innerHTML = randomQuestion.d;  
 
   availableQuestions.splice(hardQuestionIndex, 1);
 }
@@ -315,11 +317,11 @@ function nextHardQuestion () {
 /**
  * Function that either shows the next hard question or takes the user to the game over stage of the game.
  */
-hardNextBtn.addEventListener('click', function(event) {
+hardNextBtnEl.addEventListener('click', function(event) {
 
-  if (availableQuestions.lenght === 0 || currentQuestionIndex >= maxQuestions) {
+  if (availableQuestions.lenght === 0 || currentQuestionIndex >= MAX_QUESTIONS) {
     clearInterval(time);
-    hardLvlBtn.classList.add('stack'); 
+    hardLvlBtnEl.classList.add('stack'); 
     gameOver();
   } else { 
     resetAnswerBtns();
@@ -332,13 +334,13 @@ hardNextBtn.addEventListener('click', function(event) {
  * Function for game over
  */
  function gameOver() {
-  btnDiv.classList.add('stack');
-  nextBtn.classList.add('stack');
-  mediumNextBtn.classList.add('stack');
-  hardNextBtn.classList.add('stack');
-  endDiv.classList.remove('stack');
-  againBtn.classList.remove('stack');
-  submitBtn.disabled = false; 
+  btnDivEl.classList.add('stack');
+  nextBtnEl.classList.add('stack');
+  mediumNextBtnEl.classList.add('stack');
+  hardNextBtnEl.classList.add('stack');
+  endDivEl.classList.remove('stack');
+  againBtnEl.classList.remove('stack');
+  submitBtnEl.disabled = false; 
 }
 
 //Eventlistner for use of spacebar in input field (Code Credit: Code Grepper, see README.md)
@@ -349,15 +351,15 @@ user.addEventListener('keypress', function(event) {
 })
 
 //Eventlistner for validating and submitting username 
-submitBtn.addEventListener('click', function(event) {
+submitBtnEl.addEventListener('click', function(event) {
   event.preventDefault();
   if (user.value === "" || key === 32) {
-    alert('Please submit a username.');
+    alert('Please submit a username (with no blank spaces).');
     key = 0
     return false;
   } else {
-  submitBtn.disabled = true; 
-  highScore();
+  submitBtnEl.disabled = true; 
+  setHighScore();
   highScoreModal.style.display = "block";
   }
 });
@@ -366,10 +368,10 @@ submitBtn.addEventListener('click', function(event) {
  * Function to restart game at game over
  */
 function restartGame () {
-  btnDiv.classList.remove('stack');
-  nextBtn.classList.remove('stack');
-  endDiv.classList.add('stack');
-  againBtn.classList.add('stack');
+  btnDivEl.classList.remove('stack');
+  nextBtnEl.classList.remove('stack');
+  endDivEl.classList.add('stack');
+  againBtnEl.classList.add('stack');
   resetAnswerBtns();
   startGame();
 }
@@ -387,7 +389,7 @@ let loadLocalHighScore = JSON.parse(localStorage.getItem('storedHighScore')) || 
  * Puts the user on the list and sorts after highscore value.
  * Adds current highscore to local storage.
  */
-function highScore() {
+function setHighScore() {
   if (loadLocalHighScore === null) {
     highScoreArray = [
     {
@@ -467,10 +469,11 @@ highScoreList.innerHTML = highScoreHtml;
 
 /**
  * Function to close highscore modal.
- * The modal is opend in function 'usernameValue'.
+ * The modal is opend by submitting a username at the end of the game
+ * or by clicking the highscore button.
  */
-var highScoreModal = document.getElementById("highscore-modal");
-var span = document.getElementsByClassName("close")[0];
+let highScoreModal = document.getElementById("highscore-modal");
+let span = document.getElementsByClassName("close")[0];
 
 span.onclick = function() {
   highScoreModal.style.display = "none";
@@ -483,7 +486,7 @@ window.onclick = function(event) {
 };
 
 //Eventlistner to show highscore
-highscoreBtn.addEventListener('click', function(event) {
-  highScore();
+highScoreBtnEl.addEventListener('click', function(event) {
+  setHighScore();
   highScoreModal.style.display = "block";
 });
